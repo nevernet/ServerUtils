@@ -1,4 +1,10 @@
 <?php
+/**
+ * @category ${NAME}
+ * @author   Daniel(xin.qin@qinx.org)
+ * @created 2013/9/9 2:04
+ * @since
+ */
 fwrite(STDOUT, "Please input your domain name(eg. example.com): ");
 $domain = trim(fgets(STDIN));
 
