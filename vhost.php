@@ -17,7 +17,7 @@ $x = trim(fgets(STDIN));
 $isPhalcon = 'Y';
 if($x == 'N') $isPhalcon = 'N';
 
-fwrite(STDOUT, "Input rewrite file(supported wordpress,phalcon): ");
+fwrite(STDOUT, "Input rewrite file(supported wordpress,phalcon,yii): ");
 $rewrite = trim(fgets(STDIN));
 
 if($rewrite != ''){
