@@ -64,10 +64,10 @@ file_put_contents($filename,$template);
 
 
 shell_exec('mkdir '.$rootfolder);
-shell_exec('mkdir /home/wwwlog/'.$domain);
+shell_exec('mkdir /home/wwwlogs/'.$domain);
 
 shell_exec('chown -R www:www '.$rootfolder);
-shell_exec('chown -R www:www /home/wwwlog/'.$domain);
+shell_exec('chown -R www:www /home/wwwlogs/'.$domain);
 
 //write test content
 $content = <<<EOT
