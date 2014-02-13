@@ -11,4 +11,4 @@ ServerUtils
     在使用前最好chmod +x vhost.php
     执行： php -f vhost.php
     
-    
+##zyddnspy    
