@@ -12,3 +12,7 @@ ServerUtils
     执行： php -f vhost.php
     
 ##zyddnspy    
+
+##eclipse.preferences
+    @description
+    个人的配置
