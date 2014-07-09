@@ -1,4 +1,4 @@
-#Mon Jun 02 15:17:49 CST 2014
+#Wed Jul 09 10:56:53 CST 2014
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_unary_operator=true
 /instance/org.eclipse.team.ui/org.eclipse.team.ui.first_time=false
 /instance/org.eclipse.jdt.ui/java_operator=232,226,183
@@ -56,6 +56,7 @@
 /instance/org.eclipse.wst.jsdt.ui/java_doc_default=125,140,147
 /instance/org.eclipse.jdt.ui/semanticHighlighting.parameterVariable.enabled=true
 /instance/org.eclipse.php.ui/editorColorComment=\#7D8C93 | null | false | false | false | false
+@org.eclipse.wst.jsdt.core=1.1.202.v201305221835
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.comment.line_length=9999
 /instance/com.adobe.flexide.as.core/asVarColor=\#E0E2E4
 /instance/com.adobe.flexide.as.core/asReservedColor=\#93C763
@@ -121,6 +122,7 @@
 /instance/org.epic.perleditor/numberColor=255,205,34
 /instance/org.codehaus.groovy.eclipse.ui/semanticHighlighting.abstractMethodInvocation.color=224,226,228
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_opening_paren_in_catch=false
+/instance/org.zend.php.framework/zend_framework_version=Zend Framework 2
 /instance/org.eclipse.wst.xml.ui/cdataText=\#E0E2E4 | null | false | false | false | false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_assignment_operator=true
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_superinterfaces_in_type_declaration_line_wrap_policy=0
@@ -182,6 +184,7 @@
 /instance/org.python.pydev/NUMBER_COLOR=255,205,34
 /instance/org.eclipse.jdt.ui/semanticHighlighting.methodDeclarationName.enabled=true
 /instance/org.eclipse.wst.jsdt.ui/editor_save_participant_org.eclipse.wst.jsdt.ui.postsavelistener.cleanup=false
+@org.eclipse.egit.core=3.3.2.201404171909-r
 /configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_comma_in_superinterfaces=false
 /instance/org.eclipse.jdt.ui/semanticHighlighting.methodDeclarationName.color=103,140,177
@@ -223,14 +226,17 @@
 /instance/org.eclipse.dltk.core/org.eclipse.dltk.core.userLibrary.org.eclipse.php.core.PHPNature\#phalcon=<?xml version\="1.0" encoding\="UTF-8"?>\n<userlibrary systemlibrary\="true" version\="1">\n\t<archive path\="org.eclipse.dltk.core.environment.localEnvironment/\:/Users/qinxin/projects/phalcon/phalcon-devtools/ide/1.3.1"/>\n</userlibrary>\n
 \!/=
 /instance/org.eclipse.cdt.ui/pp_default=224,226,228
+/instance/org.eclipse.wst.jsdt.core/org.eclipse.wst.jsdt.core.codeComplete.visibilityCheck=enabled
 /instance/org.eclipse.php.core/useShortTags=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_semicolon=false
+/instance/org.eclipse.egit.ui/commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>&apos;&apos;</message>\n</messages>
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_opening_paren_in_switch=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_conditional_expression_line_wrap_policy=0
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.keep_then_statement_on_same_line=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.comment.new_lines_at_javadoc_boundaries=true
 /instance/org.eclipse.ui.workbench/org.eclipse.jface.textfont=1|Monaco|13.0|0|COCOA|1|Monaco;
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_closing_brace_in_block=false
+/instance/org.eclipse.php.ui/org.eclipse.php.ui.editor.templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="phpcomment" deleted\="false" description\="add the user as author" enabled\="true" id\="org.eclipse.php.ui.editor.templates.phpdoc.author" name\="author">@author Daniel Qin &lt;xin.qin@qinx.org&gt;\n</template></templates>
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.add_generated_serial_version_id=false
 @org.eclipse.dltk.launching=5.0.0.201309241927
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_opening_paren_in_array_creation=false
@@ -251,7 +257,7 @@
 /instance/com.adobe.flexide.mxml.core/mxmlTextColor=\#E0E2E4
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.number_of_blank_lines_after_use_statements=1
 /instance/org.eclipse.jst.jsp.ui/tagAttributeValue=\#EC7600 | null | false | false | false | false
-/configuration/org.tigris.subversion.subclipse.tools.usage/last_visit=1401362958302
+/configuration/org.tigris.subversion.subclipse.tools.usage/last_visit=1404874569591
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.qualify_static_member_accesses_with_declaring_class=false
 /instance/org.eclipse.php.ui/editorColorTask=\#FF8BFF | null | false | false | false | false
 /instance/org.eclipse.wst.jsdt.ui/proposalOrderMigrated=true
@@ -260,7 +266,7 @@
 /instance/org.eclipse.wst.html.ui/doctypeExternalId=\#678CB1 | null | false | false | false | false
 /instance/org.eclipse.jdt.ui/semanticHighlighting.annotation.enabled=true
 /instance/org.eclipse.datatools.sqltools.sqleditor/Double=quoted string\=0,0,0,0,0,236,118,0
-/instance/org.eclipse.ui.ide/platformState=1397135807643
+/instance/org.eclipse.ui.ide/platformState=1404874562688
 /instance/org.codehaus.groovy.eclipse.ui/semanticHighlighting.methodDeclarationName.color=232,226,183
 /instance/org.eclipse.cdt.ui/semanticHighlighting.localVariableDeclaration.color=224,226,228
 /instance/org.eclipse.dltk.launching/org.eclipse.dltk.launching.PREF_INTERPRETER_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<interpreterSettings/>\n
@@ -306,7 +312,7 @@
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_opening_paren_in_foreach=false
 /instance/org.eclipse.jst.jsp.ui/tagAttributeName=\#93C763 | null | false | false | false | false
 /instance/org.eclipse.wst.html.ui/tagAttributeValue=\#EC7600 | null | false | false | false | false
-/configuration/org.tigris.subversion.subclipse.tools.usage/visit_count=41
+/configuration/org.tigris.subversion.subclipse.tools.usage/visit_count=45
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.qualify_static_member_accesses_through_instances_with_declaring_class=true
 /instance/org.eclipse.jdt.ui/semanticHighlighting.enum.enabled=true
 /instance/com.adobe.flexide.css.core/cssNamespaceColor=\#E0E2E4
@@ -330,6 +336,7 @@
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.format_line_comment_starting_on_first_column=true
 /instance/org.eclipse.cdt.ui/c_string=236,118,0
 /instance/org.epic.perleditor/searchResultIndicationColor=97,97,97
+/instance/org.eclipse.egit.ui/resourcehistory_rev_split=700,300
 /instance/org.eclipse.wst.css.ui/ATTRIBUTE_DELIM=\#678CB1 | null | false | false | false | false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_opening_paren_in_parenthesized_expression=false
 /instance/com.adobe.flexide.as.core/asBracketColor=\#E8E2B7
@@ -352,6 +359,7 @@
 /instance/org.codehaus.groovy.eclipse.ui/semanticHighlighting.enum.color=224,226,228
 /instance/org.eclipse.wst.html.ui/tagName=\#E0E2E4 | null | false | false | false | false
 /instance/org.eclipse.jdt.ui/semanticHighlighting.staticFinalField.color=224,226,228
+/instance/org.eclipse.php.core/org.eclipse.php.core.taskPriorities=NORMAL,HIGH,NORMAL,NORMAL
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.make_private_fields_final=true
 /configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=false
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.use_blocks_only_for_return_and_throw=false
@@ -374,7 +382,7 @@
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.comment.format_line_comments=true
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_between_empty_parens_in_method_invocation=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_coloncolon_in_field_access=false
-/instance/com.zend.php.ide.ui/Bind\ namespace\ and\ location=1
+/instance/com.zend.php.ide.ui/Bind\ namespace\ and\ location=0
 @org.eclipse.wst.sse.ui=1.3.102.v201305221835
 /instance/org.codehaus.groovy.eclipse.ui/semanticHighlighting.annotation.enabled=true
 /instance/org.eclipse.wst.html.ui/entityReference=\#93C763 | null | false | false | false | false
@@ -416,6 +424,7 @@
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_assignment_force_split=false
 /instance/org.eclipse.jdt.ui/semanticHighlighting.method.enabled=true
 /instance/org.eclipse.wst.xml.ui/tagAttributeEquals=\#E0E2E4 | null | false | false | false | false
+/instance/org.eclipse.php.core/contentAssistAutoactivationDelay=50
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_closing_bracket_in_array_reference=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_arrow_in_array_creation=true
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_compact_if_line_wrap_policy=0
@@ -436,6 +445,7 @@
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.format_guardian_clause_on_one_line=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_opening_bracket_in_array_reference=false
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.use_blocks=false
+/instance/org.eclipse.egit.ui/resourcehistory_graph_split=500,500
 @org.eclipse.mylyn.monitor.ui=3.8.3.v20130107-0100
 /instance/org.eclipse.ui.ide/PROBLEMS_FILTERS_MIGRATE=true
 /instance/org.epic.perleditor/errorIndicationColor=103,140,177
@@ -460,7 +470,9 @@
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_superclass_in_type_declaration_indent_policy=0
 /instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.javadoclocations.migrated=true
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.brace_position_for_switch=0
+@org.eclipse.egit.ui=3.3.2.201404171909-r
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_new_line_before_closing_brace_in_array_initializer=true
+/instance/org.eclipse.php.core/org.eclipse.php.core.taskTags=TODO,FIXME,XXX,@todo
 /instance/org.eclipse.wst.jsdt.ui/java_keyword_return=147,199,99
 /instance/org.epic.perleditor/labelColor=224,226,228
 /instance/org.codehaus.groovy.eclipse.ui/semanticHighlighting.staticField.enabled=true
@@ -532,7 +544,7 @@
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.remove_unused_private_types=true
 /instance/org.eclipse.wst.css.ui/UNIVERSAL=\#678CB1 | null | false | false | false | false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_postfix_operator=false
-/instance/org.eclipse.wst.sse.core/task-tag-projects-already-scanned=cnphalconphp,strong
+/instance/org.eclipse.wst.sse.core/task-tag-projects-already-scanned=cnphalconphp,strong,strong-admin,test,test2
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.sort_members_all=false
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.number_of_blank_lines_at_beginning_of_method_body=0
 /instance/org.eclipse.php.ui/semanticHighlighting.org.eclipse.php.internal.ui.editor.highlighters.MethodHighlighting.color=\#678CB1
@@ -587,10 +599,12 @@ file_export_version=3.0
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.join_lines_in_comments=true
 /instance/org.eclipse.wst.html.ui/doctypeExternalPubref=\#678CB1 | null | false | false | false | false
 /instance/org.eclipse.jdt.ui/semanticHighlighting.deprecatedMember.color=224,226,228
+/instance/org.eclipse.php.core/org.eclipse.php.core.taskCaseSensitive=enabled
 /instance/org.eclipse.php.ui/editorColorVariable=\#E0E2E4 | null | false | false | false | false
 /instance/org.codehaus.groovy.eclipse.ui/semanticHighlighting.class.color=103,140,177
 /instance/org.eclipse.wst.jsdt.ui/sp_cleanup.always_use_this_for_non_static_field_access=false
 /instance/org.eclipse.jdt.ui/semanticHighlighting.staticMethodInvocation.color=224,226,228
+@org.zend.php.framework=10.1.0.v20130924-2330
 /instance/org.eclipse.ant.ui/org.eclipse.ant.ui.textColor=224,226,228
 /instance/org.zend.php.common/viewsToReopen=
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_after_assignment_operator=true
@@ -668,6 +682,7 @@ file_export_version=3.0
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_comma_in_for_inits=false
 /instance/org.epic.perleditor/bookmarkIndicationColor=103,140,177
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.indent_empty_lines=false
+/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=/Users/qinxin/workspace/strong/server/strong/.git\:/Users/qinxin/workspace/cnphalconphp/.git\:
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_parameters_in_method_declaration_indent_policy=0
 /instance/org.eclipse.php.formatter.core/formatterProfile=_dx
 /instance/org.eclipse.ui.workbench/editors=<?xml version\="1.0" encoding\="UTF-8"?>\n<editors>\n<descriptor class\="org.zend.php.zendserver.deployment.ui.editors.DeploymentDescriptorEditor" id\="org.zend.php.zendserver.deployment.ui.editors.DeploymentDescriptorEditor" image\="icons/obj16/application_obj.gif" internal\="true" label\="Deployment Descriptor" openMode\="1" open_in_place\="false" plugin\="org.zend.php.zendserver.deployment.ui"/>\n<descriptor id\="org.eclipse.ui.browser.editorSupport" image\="$nl$/icons/obj16/internal_browser.gif" internal\="false" label\="Web Browser" launcher\="org.eclipse.ui.internal.browser.BrowserLauncher" openMode\="4" open_in_place\="false" plugin\="org.eclipse.ui.browser"/>\n<descriptor class\="org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditor" id\="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" image\="$nl$/icons/full/obj16/jcu_obj.gif" internal\="true" label\="JavaScript Editor" openMode\="1" open_in_place\="false" plugin\="org.eclipse.wst.jsdt.ui"/>\n</editors>
@@ -729,6 +744,7 @@ file_export_version=3.0
 /instance/org.eclipse.dltk.ui/sourceHoverBackgroundColor=250,251,197
 /instance/org.eclipse.jdt.ui/java_doc_default=125,140,147
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.insert_space_before_coloncolon_in_method_invocation=false
+/instance/org.eclipse.php.ui/org.eclipse.php.uihoverModifierMasks=org.eclipse.php.ui.editor.hover.BestMatchHover;0;org.eclipse.php.debug.ui.hovers.PHPDebugTextHover;0;org.eclipse.php.xdebug.ui.hover.XDebugTextHover;0;org.eclipse.php.ui.editor.hover.ProblemHover;0;org.eclipse.php.ui.editor.hover.PHPDocumentationHover;0;org.eclipse.php.ui.editor.hover.PHPSourceTextHover;4194304;org.eclipse.php.ui.editor.hover.PHPAnnotationTextHover;0;
 @org.zend.usagedata=1.0.0.201309181502
 /instance/org.eclipse.cdt.ui/semanticHighlighting.method.color=103,140,177
 @org.eclipse.php.server.core=3.2.0.201309171833
@@ -756,6 +772,7 @@ file_export_version=3.0
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.alignment_for_superinterfaces_in_type_declaration_force_split=false
 /instance/org.eclipse.datatools.sqltools.sqleditor/Single-line=comment\=0,0,0,0,0,125,140,147
 /instance/org.eclipse.php.formatter.core/org.eclipse.php.formatter.core.formatter.comment.format_javadoc_comments=true
+/instance/org.eclipse.php.ui/org.eclipse.php.uihoverModifiers=org.eclipse.php.ui.editor.hover.BestMatchHover;0;org.eclipse.php.debug.ui.hovers.PHPDebugTextHover;\!0;org.eclipse.php.xdebug.ui.hover.XDebugTextHover;\!0;org.eclipse.php.ui.editor.hover.ProblemHover;\!0;org.eclipse.php.ui.editor.hover.PHPDocumentationHover;\!0;org.eclipse.php.ui.editor.hover.PHPSourceTextHover;Command;org.eclipse.php.ui.editor.hover.PHPAnnotationTextHover;\!0;
 /instance/org.eclipse.php.ui/semanticHighlighting.org.eclipse.php.internal.ui.editor.highlighters.MethodHighlighting.enabled=true
 /instance/org.eclipse.wst.css.ui/ATMARK_RULE=\#678CB1 | null | false | false | false | false
 /instance/org.eclipse.core.resources/encoding=UTF-8
