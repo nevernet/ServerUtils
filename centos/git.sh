@@ -15,6 +15,7 @@ make
 make install
 
 git config --global push.default simple
+git config --global core.editor "/usr/bin/vim"
 
 #change to your real name and email
 git config --global user.name "Daniel Qin"
