@@ -3,8 +3,11 @@ yum install -y perl-devjel perl-APCN curl-devel zilb-devel perl-ExtUtils-MakeMak
 yum install -y wget
 yum install -y unzip
 cd ~
-wget -O git-master.zip https://github.com/git/git/archive/master.zip
-unzip git-master.zip
+#wget -O git-master.zip https://github.com/git/git/archive/master.zip
+#unzip git-master.zip
+#cd git-master
+rm -rf git-master git-master.zip
+git clone https://github.com/git/git --depth=1 git-master
 cd git-master
 make configure
 ./configure --prefix=/usr/local
