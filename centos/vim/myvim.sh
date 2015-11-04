@@ -7,4 +7,4 @@ ln -s ~/.spf13-vim-local/.vimrc.local ~/.vimrc.local
 ln -s ~/.spf13-vim-local/.vimrc.before.fork ~/.vimrc.before.fork
 ln -s ~/.spf13-vim-local/.vimrc.bundles.local ~/.vimrc.bundles.local
 
-# re install plugin
+vim +BundleInstall! + BundleClean +q
