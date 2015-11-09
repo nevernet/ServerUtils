@@ -8,8 +8,8 @@ ln -s ~/.spf13-vim-local/.vimrc.before.fork ~/.vimrc.before.fork
 ln -s ~/.spf13-vim-local/.vimrc.bundles.local ~/.vimrc.bundles.local
 
 # make vimpro library
-cd ~/.vim/bundle/vimproc.vim/
-make
-cd ~
+#cd ~/.vim/bundle/vimproc.vim/
+#make
+#cd ~
 
 vim +BundleInstall! +BundleClean +q
