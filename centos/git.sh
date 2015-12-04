@@ -1,5 +1,5 @@
 #!/bin/bash
-yum install -y perl-devjel perl-APCN curl-devel zilb-devel perl-ExtUtils-MakeMaker asciidoc xmlto openssl-devel
+yum install -y perl-devjel perl-APCN curl-devel zlib-devel perl-ExtUtils-MakeMaker asciidoc xmlto openssl-devel
 yum install -y wget
 yum install -y unzip
 cd ~
