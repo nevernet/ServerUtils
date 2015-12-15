@@ -14,3 +14,16 @@ wget -O /etc/yum.repos.d/CentOS-Base-aliyun.repo http://mirrors.aliyun.com/repo/
 #mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 
+
+#open ssh server
+yum install openssh-server -y
+cd /etc/ssh
+#generate related keys
+/usr/bin/ssh-keygen -A
+
+echo "useDNS no" >> /etc/ssh/sshd_config
+systemctl enable sshd
+systemctl restart sshd
+# or 
+# /usr/sbin/sshd
+
