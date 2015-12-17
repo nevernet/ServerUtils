@@ -12,7 +12,7 @@ make && make install
 # will be installed to /usr/local/lib
 
 # install dependecy
-yum install -y curl curl-devel openssl openssl-devel gd gd-devel gettext gettext-devel gettext gettext-devel mhash mhash-devel libxslt libxslt-devel icu libicu libicu-devel libmcrypt libmcrypt-devel readline readline-devel libedit libedit-devel libtidy libtidy-devel libvpx libvpx-devel libjpeg-turbo libjpeg-turbo-devel libzip libzip-devel libXpm libXpm-devel freetype freetype-devel t1lib t1lib-devel
+yum install -y curl curl-devel openssl openssl-devel gd gd-devel gettext gettext-devel gettext gettext-devel mhash mhash-devel libxslt libxslt-devel icu libicu libicu-devel libmcrypt libmcrypt-devel readline readline-devel libedit libedit-devel libtidy libtidy-devel libvpx libvpx-devel libjpeg-turbo libjpeg-turbo-devel libzip libzip-devel libXpm libXpm-devel freetype freetype-devel t1lib t1lib-devel gmp gmp-devel
 
 cd ~
 wget http://sg2.php.net/get/php-5.6.15.tar.gz/from/this/mirror -O php-source.tar.gz
@@ -24,7 +24,7 @@ cd php-source
 make && make install
 
 cp php.ini-development /etc/php.ini
-cd /user/local/etc
+cd /usr/local/etc
 cp php-fpm.conf.default php-fpm.conf
 
 echo "php-fpm" >> /etc/rc.local
