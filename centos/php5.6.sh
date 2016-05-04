@@ -14,6 +14,9 @@ cd libxml2-2.9.2
 make && make install
 # will be installed to /usr/local/lib
 
+# install dependecy
+yum install -y curl curl-devel openssl openssl-devel gd gd-devel gettext gettext-devel gettext gettext-devel mhash mhash-devel libxslt libxslt-devel icu libicu libicu-devel libmcrypt libmcrypt-devel readline readline-devel libedit libedit-devel libtidy libtidy-devel libvpx libvpx-devel libjpeg-turbo libjpeg-turbo-devel libzip libzip-devel libXpm libXpm-devel freetype freetype-devel t1lib t1lib-devel gmp gmp-devel
+
 cd ~
 # wget http://sg2.php.net/get/php-5.6.15.tar.gz/from/this/mirror -O php-source.tar.gz
 wget http://cn2.php.net/distributions/php-5.6.19.tar.gz -O php-source.tar.gz
