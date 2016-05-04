@@ -6,9 +6,17 @@ cd ~
 #wget -O git-master.zip https://github.com/git/git/archive/master.zip
 #unzip git-master.zip
 #cd git-master
-rm -rf git-master git-master.zip
-git clone https://github.com/git/git --depth=1 git-master
-cd git-master
+
+# 方式1：
+#rm -rf git-master git-master.zip
+#git clone https://github.com/git/git --depth=1 git-master
+#cd git-master
+
+# 方式2：
+wget https://github.com/git/git/archive/v2.8.0.tar.gz
+tar zxf v2.8.0.tar.gz
+cd git-2.8.0
+
 make configure
 ./configure --prefix=/usr/local
 make

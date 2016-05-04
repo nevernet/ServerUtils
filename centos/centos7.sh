@@ -2,6 +2,7 @@
 # update system
 yum -y update
 yum -y groupinstall "Development tools"
+#yum groupinstall "Additional Development"
 yum install -y epel-release
 yum install wget
 
@@ -24,6 +25,6 @@ cd /etc/ssh
 echo "useDNS no" >> /etc/ssh/sshd_config
 systemctl enable sshd
 systemctl restart sshd
-# or 
+# or
 # /usr/sbin/sshd
 
