@@ -31,4 +31,4 @@ cp php.ini-development /etc/php.ini
 cd /usr/local/etc
 cp php-fpm.conf.default php-fpm.conf
 
-echo "php-fpm" >> /etc/rc.local
+echo "/usr/local/bin/php-fpm" >> /etc/rc.local

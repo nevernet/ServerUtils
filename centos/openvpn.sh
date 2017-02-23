@@ -4,3 +4,4 @@
 
 yum install -y openvpn easy_rsa
 cp -R /usr/share/easy-rsa/ /etc/openvpn
+
