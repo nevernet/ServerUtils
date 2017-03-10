@@ -13,9 +13,9 @@ cd ~
 #cd git-master
 
 # 方式2：
-wget https://github.com/git/git/archive/v2.8.0.tar.gz
-tar zxf v2.8.0.tar.gz
-cd git-2.8.0
+wget https://github.com/git/git/archive/v2.12.0.tar.gz
+tar zxf v2.12.0.tar.gz
+cd git-2.12.0
 
 make configure
 ./configure --prefix=/usr/local

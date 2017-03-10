@@ -18,7 +18,7 @@ iptables -A INPUT -p tcp -s 10.0.0.0/24 -j ACCEPT
 iptables -A INPUT -p tcp -s 10.0.1.0/24 --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp -s 101.227.80.115 -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-#iptables -A INPUT -p tcp -s 218.80.0.45 --dport 80 -j ACCEPT
+#iptables -A INPUT -p tcp -s 218.0.0.x --dport 80 -j ACCEPT
 #iptables -A INPUT -p tcp -s 222.73.184.166 --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8100 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8104 -j ACCEPT
@@ -27,34 +27,34 @@ iptables -A INPUT -p tcp --dport 8104 -j ACCEPT
 iptables -A FORWARD -s 10.0.1.0/24 -d 10.0.0.0/24 -j DROP
 ##### Docker #####
 #iptables -t nat -I POSTROUTING -s 0/0 -j MASQUERADE
-iptables -t nat -I POSTROUTING -s 10.0.1.0/24 -o em2 -j SNAT --to 101.227.80.115 
+iptables -t nat -I POSTROUTING -s 10.0.1.0/24 -o em2 -j SNAT --to 101.227.80.115
 iptables -t nat -I POSTROUTING -s 10.0.0.0/24 -o em2 -j SNAT --to 101.227.80.115
 #########h5dev#####
 ######center#######
 #mysql
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 63306 -j DNAT --to 10.0.1.26:63306
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 63306 -j DNAT --to 10.0.1.26:63306
 #ssh
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 50022 -j DNAT --to 10.0.1.26:22
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 50022 -j DNAT --to 10.0.1.26:22
 #memcached
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 12050 -j DNAT --to 10.0.1.26:12050
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 12050 -j DNAT --to 10.0.1.26:12050
 #redis
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 15379 -j DNAT --to 10.0.1.26:15379
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 15379 -j DNAT --to 10.0.1.26:15379
 #authd
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 15000 -j DNAT --to 10.0.1.26:15000
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 15001 -j DNAT --to 10.0.1.26:15001
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 15002 -j DNAT --to 10.0.1.26:15002
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 15000 -j DNAT --to 10.0.1.26:15000
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 15001 -j DNAT --to 10.0.1.26:15001
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 15002 -j DNAT --to 10.0.1.26:15002
 #ssl
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 443 -j DNAT --to 10.0.1.26:443
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 443 -j DNAT --to 10.0.1.26:443
 #nsq
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 4250 -j DNAT --to 10.0.1.26:4250
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 4271 -j DNAT --to 10.0.1.26:4271
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 4250 -j DNAT --to 10.0.1.26:4250
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 4271 -j DNAT --to 10.0.1.26:4271
 #callback
 iptables -t nat -I PREROUTING -p tcp -i em2 --dport 8888 -j DNAT --to 10.0.1.26:80
 #t.dev.hdurl.me
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 18011 -j DNAT --to 10.0.1.26:18011
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 18012 -j DNAT --to 10.0.1.26:18012
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 18011 -j DNAT --to 10.0.1.26:18011
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 18012 -j DNAT --to 10.0.1.26:18012
 
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 --dport 12345 -j DNAT --to 10.0.1.26:12345
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x --dport 12345 -j DNAT --to 10.0.1.26:12345
 
 #########h5dev#####
 #####zhongwei######
@@ -81,24 +81,24 @@ iptables -t nat -I PREROUTING -p tcp -i em2 --dport 50036 -j DNAT --to 10.0.1.35
 iptables -t nat -I PREROUTING -p tcp -i em2 --dport 7002 -j DNAT --to 10.0.1.35:7002
 
 #########xhb-fly-dev#####
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 51022 -j DNAT --to 10.0.1.166:22
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 8101 -j DNAT --to 10.0.1.166:8101
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 4171 -j DNAT --to 10.0.1.166:4171
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 33306 -j DNAT --to 10.0.1.166:63306
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 17390 -j DNAT --to 10.0.1.166:17390
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 17379 -j DNAT --to 10.0.1.166:17379
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 12010 -j DNAT --to 10.0.1.166:12010
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 12030 -j DNAT --to 10.0.1.166:12030
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 19000 -j DNAT --to 10.0.1.166:19000
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 19001 -j DNAT --to 10.0.1.166:19001
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 18000 -j DNAT --to 10.0.1.166:18000
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 18001 -j DNAT --to 10.0.1.166:18001
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 88 -j DNAT --to 10.0.1.166:88
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 89 -j DNAT --to 10.0.1.166:89
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 51022 -j DNAT --to 10.0.1.166:22
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 8101 -j DNAT --to 10.0.1.166:8101
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 4171 -j DNAT --to 10.0.1.166:4171
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 33306 -j DNAT --to 10.0.1.166:63306
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 17390 -j DNAT --to 10.0.1.166:17390
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 17379 -j DNAT --to 10.0.1.166:17379
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 12010 -j DNAT --to 10.0.1.166:12010
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 12030 -j DNAT --to 10.0.1.166:12030
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 19000 -j DNAT --to 10.0.1.166:19000
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 19001 -j DNAT --to 10.0.1.166:19001
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 18000 -j DNAT --to 10.0.1.166:18000
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 18001 -j DNAT --to 10.0.1.166:18001
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 88 -j DNAT --to 10.0.1.166:88
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 89 -j DNAT --to 10.0.1.166:89
 
 #dev-scribe
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 51023 -j DNAT --to 10.0.1.170:22
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 2463 -j DNAT --to 10.0.1.170:2463
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 51023 -j DNAT --to 10.0.1.170:22
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 2463 -j DNAT --to 10.0.1.170:2463
 
 #########castle-dev#####
 iptables -t nat -I PREROUTING -p tcp -i em2 --dport 50037 -j DNAT --to 10.0.1.36:22
@@ -112,8 +112,8 @@ iptables -t nat -I PREROUTING -p tcp -i em2 --dport 1873 -j DNAT --to 10.0.1.41:
 
 #########mongodb-dev01#####
 iptables -t nat -I PREROUTING -p tcp -i em2 --dport 50038 -j DNAT --to 10.0.1.38:22
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 27017 -j DNAT --to 10.0.1.38:27017
-iptables -t nat -I PREROUTING -p tcp -s 218.80.0.45 -i em2 --dport 27018 -j DNAT --to 10.0.1.39:27017
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 27017 -j DNAT --to 10.0.1.38:27017
+iptables -t nat -I PREROUTING -p tcp -s 218.0.0.x -i em2 --dport 27018 -j DNAT --to 10.0.1.39:27017
 
 #########wangyuanbo#####
 iptables -t nat -I PREROUTING -p tcp -i em2 --dport 50040 -j DNAT --to 10.0.1.40:22
