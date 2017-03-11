@@ -30,4 +30,3 @@ vim /etc/crontab
 30 1 15 */3 * root /root/certbot-auto renew --quiet
 30 2 15 */3 * root /root/certbot-auto renew --quiet
 
-docker run --network br0 --ip 10.0.20.60 -i -t -d --privileged --restart always -h ZL_PROD_DB1 --name ZL_PROD_DB1 10.0.0.22:5000/mysql:v2 /root/init.sh
