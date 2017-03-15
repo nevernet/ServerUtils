@@ -4,6 +4,7 @@ pip install shadowsocks
 
 cp shadowsocks.json /etc/shadowsocks.json
 
+# for centos 7
 firewall-cmd --zone=public --add-port=12050/tcp --permanent
 firewall-cmd --reload
 
