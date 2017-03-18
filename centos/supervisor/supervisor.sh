@@ -5,6 +5,7 @@ pip install supervisor
 # prepare the directory which will be used.
 mkdir -p /var/run
 mkdir -p /var/log/supervisord
+mkdir -p /opt/logs/supervisord
 
 cp supervisord.conf /etc/supervisord.conf
 supervisord -c /etc/supervisord.conf
