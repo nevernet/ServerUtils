@@ -23,6 +23,8 @@ export LC_CTYPE="en_US.UTF-8"
 
 # 更新
 ./certbot-auto renew --quiet
+# 国内的源由于补全，在更新的时候，可以暂时禁止国内的源，即:
+# mv ~/.pip/pip.conf ~/.pip/pip.conf.bak
 
 # 定时更新
 vim /etc/crontab

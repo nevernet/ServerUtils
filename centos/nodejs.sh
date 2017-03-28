@@ -13,3 +13,15 @@ node -v
 npm -v
 tsc -v
 ng help
+
+#修改源： 临时模式
+npm --registry https://registry.npm.taobao.org info express
+
+#修改源： 永久模式
+npm config set registry https://registry.npm.taobao.org
+npm config get registry
+npm info express
+
+#cnpm安装
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+

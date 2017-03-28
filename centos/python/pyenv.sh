@@ -12,3 +12,6 @@ env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.13
 # pyenv install 2.7.13
 pyenv global 2.7.13
 python -V
+
+
+pip install torndb tornado  requests MySQL-python supervisor pymongo redis thrift pynsq arrow python-memcached
