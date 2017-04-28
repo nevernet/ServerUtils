@@ -28,3 +28,6 @@ stdout_logfile = /var/log/supervisord/shadowsocks.log
 
 supervisorctl update
 supervisorclt restart shadowsocks
+
+# 启动脚本：
+nohup sslocal -s x.x.x.x -p 12050 -l 7070 -k "password" -m aes-256-cfb &
