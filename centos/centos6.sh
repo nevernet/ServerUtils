@@ -28,3 +28,18 @@ make
 make install
 
 automake --version
+
+# 服务器配置
+sysctl -w net.ipv4.ip_forward=1
+sysctl -p
+
+sshd 服务
+vim /etc/ssh/sshd_config
+Port xx # 更换一个端口
+ClientAliveInterval 60
+ClientAliveCountMax 3
+UseDNS no
+
+# 重启 并重新登录
+service sshd start
+chkconfig sshd on

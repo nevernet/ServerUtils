@@ -16,7 +16,7 @@ firewall-cmd --reload
 # 集成到supervisor
 echo "
 [program:shadowsocks]
-command=ssserver -c /etc/shadowsocks.json
+command=/root/.pyenv/shims/ssserver -c /etc/shadowsocks.json
 autostart = true
 startsecs = 5
 user = root
