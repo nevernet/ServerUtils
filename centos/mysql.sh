@@ -24,7 +24,7 @@ tar xvf mysql-5.7.17-1.el6.x86_64.rpm-bundle.tar # 会解压出来很多rpm文�
 # 删除mysql-libs- 5.1.73-5.el6_7.1
 yum remove -y mysql-libs*
 # 安装顺序:
-yum install -y numactl perl-JSON perl-Time-HiRes
+yum install -y numactl perl-JSON perl-Time-HiRes libaio initscripts
 rpm -ivh mysql-community-common-5.7.17-1.el6.x86_64.rpm
 rpm -ivh mysql-community-libs-5.7.17-1.el6.x86_64.rpm
 rpm -ivh mysql-community-client-5.7.17-1.el6.x86_64.rpm
@@ -43,3 +43,6 @@ vim /var/log/mysqld.log
 
 # 安全配置
 mysql_secure_installation
+
+
+docker run --network br0 --ip 10.0.20.103 -itd --privileged -h mysql --name mysql centos:6 /bin/bash

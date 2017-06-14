@@ -28,3 +28,11 @@ systemctl restart sshd
 # or
 # /usr/sbin/sshd
 
+# 禁用firewall-cmd
+systemctl stop firewalld.service #停止firewall
+systemctl disable firewalld.service #禁止firewall开机启动
+
+# 安装iptables
+yum install -y iptables-services
+systemctl restart iptables.service #最后重启防火墙使配置生效
+systemctl enable iptables.service #设置防火墙开机启动
