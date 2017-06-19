@@ -5,6 +5,8 @@ docker pull alpine latest
 docker run --network br0 --ip 10.0.20.100 -itd --privileged -h alpine --name alpine alpine:base ash
 docker run --network br0 --ip 10.0.20.104 -itd --privileged -h alpine_java --name alpine_java alpine:base ash
 
+docker run --network br0 --ip 10.0.20.100 -itd --privileged -h java --name java 10.0.20.200:5000/centos:v2 /bin/bash
+
 # 更新apk索引
 apk update
 
