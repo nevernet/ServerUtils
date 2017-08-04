@@ -21,3 +21,13 @@ make distclean
 phpize
 ./configure --enable-memcached-igbinary --disable-memcached-sasl
 make && make install
+
+# for php 7.1.x
+cd ~
+git clone -b v3.0.3 --depth=1 --single-branch https://github.com/php-memcached-dev/php-memcached.git
+cd php-memcached
+make clean
+make distclean
+phpize
+./configure --enable-memcached-igbinary --disable-memcached-sasl
+make && make install
