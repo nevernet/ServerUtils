@@ -14,6 +14,6 @@ echo 'alias ll="ls -alh"' >> vim .zshrc
 source .zshrc
 
 # 使用
-gst = git status
-gp = git pull
-gc -am "xx"  = git commit -am "xx"
+ - gst = git status
+ - gp = git pull
+ - gc -am "xx"  = git commit -am "xx"
