@@ -36,6 +36,7 @@ sysctl -p
 sshd 服务
 vim /etc/ssh/sshd_config
 Port xx # 更换一个端口
+PertRootLogin yes|no
 ClientAliveInterval 60
 ClientAliveCountMax 3
 UseDNS no
