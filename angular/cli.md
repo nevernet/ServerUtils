@@ -74,4 +74,4 @@ npm install --save-dev @angular/cli@latest
 npm install
 ```
 
-> 更新参见：https://github.com/angular/angular-cli
+> 更多参见：https://github.com/angular/angular-cli
