@@ -2,9 +2,11 @@
 
 > 请先升级node>=8.x和npm>5.5.x
 
+```sh
 npm uninstall -g angular-cli
 npm uninstall --save-dev angular-cli
 npm cache verify
+```
 
 # package.json配置（不定期更新，目前这个版本对应angular 5.0.x 和cli 1.5.x
 
@@ -66,8 +68,10 @@ npm cache verify
 > 说明： typescript 本应该对应到2.5.3， 但是我使用了2.6.1.
 
 # 进入项目目录
+```sh
 rm -rf node_modules dist
 npm install --save-dev @angular/cli@latest
 npm install
+```
 
 > 更新参见：https://github.com/angular/angular-cli
