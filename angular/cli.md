@@ -10,7 +10,7 @@ npm cache verify
 
 # package.json配置（不定期更新，目前这个版本对应angular 5.0.x 和cli 1.5.x
 
-```
+```json
 {
   "name": "xs",
   "version": "0.0.0",
