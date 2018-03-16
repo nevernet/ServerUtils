@@ -1,3 +1,4 @@
+# 采用yum安装，版本不一定ok
 yum install -y ImageMagick ImageMagick-devel
 
 # install from source
