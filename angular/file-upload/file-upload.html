@@ -1,0 +1,6 @@
+<div class="uploader_bg">
+    <input id="userUpload1" type="file" class="uploader" ng2FileSelect [uploader]="uploader_1"
+    />
+    <img [src]="imageUrl1" *ngIf="imageUrl1!==''">
+    <img class="remove" src="/assets/img/remove-sign.png" *ngIf="imageUrl1!==''" (click)="removeImage(1)">
+</div>

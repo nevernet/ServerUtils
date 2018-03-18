@@ -5,9 +5,9 @@ import { FileUploader, FileItem, ParsedResponseHeaders, FileUploaderOptions, Fil
 
 
 @Component({
-    selector: 'app-fileupload',
-    templateUrl: './fileupload.component.html',
-    styleUrls: ['./fileupload.component.scss'],
+    selector: 'app-fileu-pload',
+    templateUrl: './fileu-pload.html',
+    styleUrls: ['./file-upload.scss'],
     providers: [
     ]
 })
@@ -23,6 +23,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
     };
     // 上传文件配置
     uploader_1: FileUploader = new FileUploader(this.uploadOptions);
+    imageUrl1 = '';
 
     constructor(
         private router: Router,
@@ -40,6 +41,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
             const data = JSON.parse(response);
             if (data.code === 0) {
                 console.log(data.data['url'])
+                this.imageUrl1 = data.data['url'];
             } else {
                 console.log(data.msg);
             }
