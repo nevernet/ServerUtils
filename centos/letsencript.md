@@ -13,7 +13,7 @@ export LC_CTYPE="en_US.UTF-8"
 # 第三步： 生成对应的域名证书（注意：这里需要网站可以通过http访问，所以必须先配置所有站点可以访问）
 # 把同一个域名的多个站点，生成到一个证书里面.
 ```
-./certbot-auto certonly --email qinxin@zhiliao.io  --agree-tos --no-eff-email --webroot \
+./certbot-auto certonly --email user@example.com  --agree-tos --no-eff-email --webroot \
 -w /opt/www/study.example.com/dist/ -d study.example.com \
 -w /opt/www/study-api.example.com/public/api/ -d study-api.example.com \
 -w /opt/www/study-api.example.com/public/sapi/ -d study-teacher-api.example.com \
