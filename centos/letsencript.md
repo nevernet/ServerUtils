@@ -1,3 +1,10 @@
+# 准备工作
+```
+python -V
+# 如果版本号不是2.7以上，则直接
+pyenv global 2.7.13 # 必须先安装pyenv， 请参考 python/pyenv.sh
+```
+
 # 第一步： 创建ssl目录:
 mkdir -p /etc/nginx/vhost/ssl
 cd /etc/nginx/vhost/ssl
@@ -61,4 +68,3 @@ service crond restart
 
 # 国内的源由于补全，在更新的时候，可以暂时禁止国内的源，即:
 # mv ~/.pip/pip.conf ~/.pip/pip.conf.bak
-

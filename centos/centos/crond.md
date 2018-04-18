@@ -1,4 +1,4 @@
-yum install cronie
+yum install -y cronie
 
 
 判定是否启动：

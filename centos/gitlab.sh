@@ -31,9 +31,13 @@ mkdir /etc/gitlab/ssl
 
 # 修改配置文件
 vim /etc/gitlab/gitlab.rb
-external_url "https://example.com/gitlab"
+external_url "https://git.example.com/"
 nginx['redirect_http_to_https'] = true
 nginx['ssl_certificate'] = "/etc/gitlab/ssl/1_git.xlab.la_bundle.crt"
 nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/2_git.xlab.la.key"
 
+# 重新配置
 gitlab-ctl reconfigure
+
+# 重启nginx
+gitlab-ctl restart nginx
