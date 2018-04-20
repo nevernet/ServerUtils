@@ -17,3 +17,7 @@ gem install bundle rake
 # 修改bundle源
 bundle config mirror.https://rubygems.org https://gems.ruby-china.org
 bundle install
+
+# macOS 10.13.4 版本修复
+sudo gem update --force --system 2.6.11
+sudo gem update --system
