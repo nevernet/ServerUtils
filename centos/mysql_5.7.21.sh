@@ -5,6 +5,7 @@
 wget -O mysql-5.7.rpm https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
 rpm -ivh mysql-5.7.rpm
 
+yum install -y mysql-community-devel mysql-community-libs mysql-community-common mysql-community-client
 yum install -y mysql-community-server
 
 # 安装方式二： 如果yum安装速度很慢，则可以通过下载bundle.tar文件来安装，这个是把所有rpm包打包后的文件
@@ -34,7 +35,7 @@ rpm -qa | grep -i mysql
 # mysql-community-server-5.7.17-1.el6.x86_64
 
 # 按顺序删除
- rpm -e mysql-community-common-5.7.17-1.el6.x86_64^C
+ rpm -e mysql-community-common-5.7.17-1.el6.x86_64
  rpm -e mysql-community-server-5.7.17-1.el6.x86_64
  rpm -e mysql-community-embedded-devel-5.7.17-1.el6.x86_64
  rpm -e mysql-community-devel-5.7.17-1.el6.x86_64

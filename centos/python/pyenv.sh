@@ -13,5 +13,13 @@ env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 2.7.13
 pyenv global 2.7.13
 python -V
 
+# install library
+```
+pip install torndb tornado  requests supervisor pymongo redis thrift pynsq arrow python-memcached
+```
 
-pip install torndb tornado  requests MySQL-python supervisor pymongo redis thrift pynsq arrow python-memcached
+# 安装msyql
+# 注意，需要先安装mysql client，请参考mysql_5.7.21.sh里面的安装方式1
+```
+pip install MySQL-python
+```
