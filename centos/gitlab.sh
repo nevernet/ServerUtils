@@ -55,3 +55,9 @@ gitlab-rake gitlab:backup:create STRATEGY=copy
 # Update to the latest version of GitLab.
 
 yum install -y gitlab-ce
+
+
+# 修改源。 原始的gitlab.com的源下载很慢
+vim /etc/yum.repos.d/gitlab-ce.repo
+# 修改baseurl为下面地址：
+https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el$releasever/
