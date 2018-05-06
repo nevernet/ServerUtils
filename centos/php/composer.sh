@@ -1,3 +1,4 @@
+#!/bin/zsh
 # 安装
 cd ~
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
