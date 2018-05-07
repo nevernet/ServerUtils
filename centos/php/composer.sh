@@ -11,3 +11,8 @@ ln -sf ~/composer.phar /usr/local/bin/composer
 # 测试
 composer --version
 
+# 如果更新了composer.json， 则执行
+composer update
+
+# 安装扩展包
+composer install
