@@ -1,16 +1,24 @@
-# 更新cli
+# 更新 cli
 
-> 请先升级node>=8.x和npm>5.5.x
+> 请先升级 node>=8.x 和 npm>5.5.x
 
-## 先清除全局的ng cli
-```bash
+## 先清除全局的 ng cli
+
+```
 npm uninstall -g angular-cli
 npm cache verify
 
 npm install --g @angular/cli@1.6.8
 ```
 
-# 进入项目目录，重新安装项目目录angular cli
+# 创建新项目:
+
+```
+ng new angular-demo --style=scss --skip-install
+```
+
+# 老项目： 进入项目目录，重新安装项目目录 angular cli
+
 ```bash
 npm uninstall --save-dev angular-cli
 rm -rf node_modules dist
@@ -19,13 +27,14 @@ npm install --save-dev @angular/cli@1.6.8
 npm install
 ```
 
-# package.json配置（不定期更新，目前这个版本对应angular 5.2.9 和cli 1.6.8
-参见package.json
-> 说明： typescript 应该对应到2.5.3.
+# package.json 配置（不定期更新，目前这个版本对应 angular 5.2.9 和 cli 1.6.8
 
+参见 package.json
 
+> 说明： typescript 应该对应到 2.5.3.
 
 # 进入项目目录
+
 `ng version`的输出
 
 ```
@@ -48,7 +57,5 @@ Angular: 5.2.9
 typescript: 2.5.3
 webpack: 3.10.0
 ```
-
-
 
 > 更多参见：https://github.com/angular/angular-cli
