@@ -79,6 +79,3 @@ vim /var/log/mysqld.log
 
 # 安全配置
 mysql_secure_installation
-
-
-docker run --network br0 --ip 10.0.20.103 -itd --privileged -h mysql --name mysql centos:6 /bin/bash
