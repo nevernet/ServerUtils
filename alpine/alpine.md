@@ -64,11 +64,3 @@ vi /etc/passwd
 ```
 docker run  -itd --privileged alpine:latest /bin/bash
 ```
-
-# 本地项目
-
-macx 下：
-
-```
-docker run -d -p 80:80 -v /opt/local-docker:/opt -v /Users/qinxin/workspace/:/workspace --privileged -h php56 --name php56 alpine-php56:v1 /root/init.sh
-```
