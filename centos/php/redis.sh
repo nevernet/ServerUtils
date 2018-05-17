@@ -7,4 +7,3 @@ cd phpredis
 phpize
 ./configure --enable-redis-igbinary
 make && make install
-

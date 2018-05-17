@@ -13,14 +13,15 @@ make install
 
 
 # for php 5.6
-cd ~
-git clone -b 2.2.0 --depth=1 --single-branch https://github.com/php-memcached-dev/php-memcached.git
-cd php-memcached
-make clean
-make distclean
-phpize
-./configure --enable-memcached-igbinary --disable-memcached-sasl
-make && make install
+pecl install memcached-2.2.0
+# cd ~
+# git clone -b 2.2.0 --depth=1 --single-branch https://github.com/php-memcached-dev/php-memcached.git
+# cd php-memcached
+# make clean
+# make distclean
+# phpize
+# ./configure --enable-memcached-igbinary --disable-memcached-sasl
+# make && make install
 
 # for php 7.1.x
 pecl install memcached
