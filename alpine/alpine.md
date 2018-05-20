@@ -36,7 +36,7 @@ vim /etc/ssh/sshd_config
 # 安装
 
 ```
-apk add git wget bash bash-completion
+apk add git wget bash bash-completion netcat-openbsd
 ```
 
 # 基础设置
