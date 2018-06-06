@@ -1,5 +1,14 @@
 # 安装 pyenv
 
+## 依赖
+
+```
+# for centos
+yum install gcc make sqlite3 sqlite-devel bzip2 bzip2-devel openssl openssl-devel readline readline-devel zlib zlib-devel
+```
+
+## 安装 pyenv
+
 ```
 cd ~
 git clone --depth=1 https://github.com/yyuu/pyenv.git ~/.pyenv
@@ -28,13 +37,13 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 可以通过 `pyenv install --list` 来查看有哪些提供的版本
 
 ```
-pyenv install 2.7.13
+pyenv install 2.7.15
 ```
 
 设置全局的版本:
 
 ```
-pyenv global 2.7.13
+pyenv global 2.7.15
 python -V
 ```
 
