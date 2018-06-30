@@ -23,12 +23,12 @@ pecl install memcached-2.2.0
 # ./configure --enable-memcached-igbinary --disable-memcached-sasl
 # make && make install
 
-# for php 7.1.x
+# for php 7.0+
 pecl install memcached
 
-#下面方式 暂不确定是否稳定。
+# 源码安装
 cd ~
-git clone -b v3.0.3 --depth=1 --single-branch https://github.com/php-memcached-dev/php-memcached.git
+git clone -b v3.0.4 --depth=1 --single-branch https://github.com/php-memcached-dev/php-memcached.git
 cd php-memcached
 make clean
 make distclean

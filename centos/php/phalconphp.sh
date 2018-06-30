@@ -1,4 +1,5 @@
-# 最新版 v3.3.x 支持 php7.2
+# 最新版 v3.3.x+ 支持 php7.2
+
 cd ~
 git clone --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
 cd cphalcon/build
