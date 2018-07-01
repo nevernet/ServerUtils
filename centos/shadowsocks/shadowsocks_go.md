@@ -1,13 +1,19 @@
 # 安装 go
 
 yum install -y wget git
-wget https://dl.google.com/go/go1.10.3.linux-386.tar.gz # 如果是 64 位机器，则下载 64 的
-tar zxf go1.10.3.linux-386.tar.gz
+
+wget https://dl.google.com/go/go1.10.3.linux-386.tar.gz #
+
+如果是 64 位机器，则下载 64 的
+wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
+tar zxf go1.10.3.linux-amd64.tar.gz
 mv go /usr/local
 
 # 修改 .bash_profile
 
 PATH=$PATH:/usr/local/go/bin
+
+source .bash_profile
 
 # 测试
 

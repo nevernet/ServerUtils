@@ -25,3 +25,5 @@ npm info express
 #cnpm安装
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
+# 源码安装
+yum install -y gcc gcc-c++ # 安装依赖
