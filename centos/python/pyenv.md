@@ -4,7 +4,7 @@
 
 ```
 # for centos
-yum install gcc make sqlite3 sqlite-devel bzip2 bzip2-devel openssl openssl-devel readline readline-devel zlib zlib-devel
+yum install -y gcc make sqlite3 sqlite-devel bzip2 bzip2-devel openssl openssl-devel readline readline-devel zlib zlib-devel
 ```
 
 ## 安装 pyenv

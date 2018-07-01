@@ -14,12 +14,11 @@ mkdir -p /opt/logs/supervisord
 
 cp supervisord.conf /etc/supervisord.conf
 /root/.pyenv/shims/supervisord -c /etc/supervisord.conf
-
 ```
 
 # add to auto start when system on
-`echo 'supervisord -c /etc/supervisord.conf' >> /etc/rc.d/rc.local`
 
+`echo 'supervisord -c /etc/supervisord.conf' >> /etc/rc.d/rc.local`
 
 # Supervisord 安装完成后有两个可用的命令行 supervisord 和 supervisorctl，命令使用解释如下：
 
@@ -31,4 +30,3 @@ cp supervisord.conf /etc/supervisord.conf
     * supervisorctl stop all，停止全部进程，注：start、restart、stop 都不会载入最新的配置文件。
     * supervisorctl reload，载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程。
     * supervisorctl update，根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启。
-
