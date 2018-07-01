@@ -1,19 +1,26 @@
-#!/bin/bash
+# 服务器配置 bbr
+
+[todo]
+
+# 安装 shadowsocks
+
 yum install python-setuptools && easy_install pip
 pip install shadowsocks
 
 cp shadowsocks.json /etc/shadowsocks.json
 
 # for centos 7
+
 firewall-cmd --zone=public --add-port=12050/tcp --permanent
 firewall-cmd --reload
 
 # 体验
+
 #ssserver -c /etc/shadowsocks.json -d start
 #ssserver -c /etc/shadowsocks.json -d stop
 
+# 集成到 supervisor
 
-# 集成到supervisor
 echo "
 [program:shadowsocks]
 command=/root/.pyenv/shims/ssserver -c /etc/shadowsocks.json
@@ -30,4 +37,5 @@ supervisorctl update
 supervisorclt restart shadowsocks
 
 # 启动脚本：
+
 nohup sslocal -s x.x.x.x -p 12050 -l 7070 -k "password" -m aes-256-cfb &
