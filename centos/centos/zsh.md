@@ -1,6 +1,8 @@
 # 安装 zsh
+```
 yum -y install zsh
 chsh -s /bin/zsh
+```
 
 # 重启
 reboot
