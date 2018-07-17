@@ -18,12 +18,23 @@ npm -v
 
 # 安装 shadowsocks manager
 
-npm install sqlite3 --save --unsafe-perm
-
 git clone https://github.com/shadowsocks/shadowsocks-manager.git
 cd shadowsocks-manager
-npm i
+npm i --unsafe-perm
 
-# 启动
+# 配置
 
-node server.js
+-   修改 ssserver 的启动
+    在/etc/shadowsocks.json 里面增加`manager-address`
+
+```
+"manager-address": "127.0.0.1:6000"
+```
+
+具体参见 [shadowsocks.json](./shadowsocks.json)
+
+-   添加 ssmgr.yml 的配置
+    具体参见 [ssmgr.yml](./ssmgr.yml)
+
+-   添加 webgui.yml 的配置
+    具体参见 [webgui.yml](./webgui.yml)

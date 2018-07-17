@@ -1,0 +1,54 @@
+type: m
+
+manager:
+  address: 127.0.0.1:6001
+  password: 'password'
+  # 这部分的端口和密码需要跟上一步 manager 参数里的保持一致，以连接 type s 部分监听的 tcp 端口
+plugins:
+  flowSaver:
+    use: true
+  user:
+    use: true
+  account:
+    use: true
+  macAccount:
+    use: true
+  group:
+    use: true
+  email:
+    use: true
+    type: 'smtp'
+    username: 'username@example.com'
+    password: 'password'
+    host: 'smtp.example.com'
+    # 这部分的邮箱和密码是用于发送注册验证邮件，重置密码邮件
+  webgui:
+    use: true
+    host: '0.0.0.0'
+    port: '8001'
+    site: 'http://11.22.33.44'
+    # cdn: 'http://xxx.com' # 静态资源cdn地址，可省略
+    # icon: 'icon.png' # 自定义首页图标，默认路径在 ~/.ssmgr 可省略
+    # skin: 'default' # 首页皮肤，可省略
+    # googleAnalytics: 'UA-xxxxxxxx-x' # Google Analytics ID，可省略
+    gcmSenderId: '456102641793'
+    gcmAPIKey: 'AAAAGzzdqrE:XXXXXXXXXXXXXX'
+  webgui_telegram: # telegram 机器人的配置，可省略
+    use: true
+    token: '191374681:AAw6oaVPR4nnY7T4CtW78QX-Xy2Q5WD3wmZ'
+  alipay:
+    # 如果不使用支付宝，这段可以去掉
+    use: false
+    appid: 2015012108272442
+    notifyUrl: 'http://yourwebsite.com/api/user/alipay/callback'
+    merchantPrivateKey: 'xxxxxxxxxxxx'
+    alipayPublicKey: 'xxxxxxxxxxx'
+    gatewayUrl: 'https://openapi.alipay.com/gateway.do'
+  paypal:
+    # 如果不使用paypal，这段可以去掉
+    use: false
+    mode: 'live' # sandbox or live
+    client_id: 'At9xcGd1t5L6OrICKNnp2g9'
+    client_secret: 'EP40s6pQAZmqp_G_nrU9kKY4XaZph'
+
+db: 'webgui.sqlite'
