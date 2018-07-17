@@ -1,4 +1,4 @@
-相关配置
+supervisor 相关配置
 
 ```
 [program:shadowsocks-sserver]
