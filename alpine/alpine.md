@@ -53,6 +53,13 @@ auto eth0
 iface eth0 inet dhcp
 ```
 
+# 时区设置
+
+```
+apk add tzdata
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
 # 修改/etc/passwd
 
 ```
@@ -62,5 +69,5 @@ vi /etc/passwd
 # docker run demo
 
 ```
-docker run  -itd --privileged alpine:latest /bin/bash
+docker run  -itd --privileged -h demo --name demo alpine:latest /bin/bash
 ```
