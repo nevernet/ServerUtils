@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # 安装方式一： 安装mysql repo源
-# wget -O mysql-5.7.rpm http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
 wget -O mysql-5.7.rpm https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
 rpm -ivh mysql-5.7.rpm
 
@@ -9,18 +8,18 @@ yum install -y mysql-community-devel mysql-community-libs mysql-community-common
 yum install -y mysql-community-server
 
 # 安装方式二： 如果yum安装速度很慢，则可以通过下载bundle.tar文件来安装，这个是把所有rpm包打包后的文件
-wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.21-1.el6.x86_64.rpm-bundle.tar
-tar xvf mysql-5.7.21-1.el6.x86_64.rpm-bundle.tar # 会解压出来很多rpm文件
+wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.23-1.el6.x86_64.rpm-bundle.tar
+tar xvf mysql-5.7.23-1.el6.x86_64.rpm-bundle.tar # 会解压出来很多rpm文件
 # 解压出来的文件:
-# mysql-community-test-5.7.21-1.el6.x86_64.rpm
-# mysql-community-embedded-5.7.21-1.el6.x86_64.rpm
-# mysql-community-embedded-devel-5.7.21-1.el6.x86_64.rpm
-# mysql-community-server-5.7.21-1.el6.x86_64.rpm
-# mysql-community-libs-compat-5.7.21-1.el6.x86_64.rpm
-# mysql-community-devel-5.7.21-1.el6.x86_64.rpm
-# mysql-community-client-5.7.21-1.el6.x86_64.rpm
-# mysql-community-libs-5.7.21-1.el6.x86_64.rpm
-# mysql-community-common-5.7.21-1.el6.x86_64.rpm
+# mysql-community-test-5.7.23-1.el6.x86_64.rpm
+# mysql-community-embedded-5.7.23-1.el6.x86_64.rpm
+# mysql-community-embedded-devel-5.7.23-1.el6.x86_64.rpm
+# mysql-community-server-5.7.23-1.el6.x86_64.rpm
+# mysql-community-libs-compat-5.7.23-1.el6.x86_64.rpm
+# mysql-community-devel-5.7.23-1.el6.x86_64.rpm
+# mysql-community-client-5.7.23-1.el6.x86_64.rpm
+# mysql-community-libs-5.7.23-1.el6.x86_64.rpm
+# mysql-community-common-5.7.23-1.el6.x86_64.rpm
 
 # 删除老版本：
 # 查看已经安装的版本：
@@ -50,16 +49,17 @@ rpm -qa | grep -i mysql
 
 # 删除mysql-libs- 5.1.73-5.el6_7.1
 yum remove -y mysql-libs*
+yum remove -y mariadb-libs*
 # 安装顺序:
 yum install -y numactl perl-JSON perl-Time-HiRes libaio initscripts
-rpm -ivh mysql-community-common-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-libs-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-client-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-devel-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-libs-compat-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-server-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-embedded-5.7.21-1.el6.x86_64.rpm
-rpm -ivh mysql-community-embedded-devel-5.7.21-1.el6.x86_64.rpm
+rpm -ivh mysql-community-common-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-libs-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-client-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-devel-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-libs-compat-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-server-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-embedded-5.7.23-1.el6.x86_64.rpm
+rpm -ivh mysql-community-embedded-devel-5.7.23-1.el6.x86_64.rpm
 
 # 启动
 service mysqld start
