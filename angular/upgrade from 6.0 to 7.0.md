@@ -63,6 +63,23 @@ tsconfig.josn
 // 具体位置，请参考angular.json
 ```
 
+#更新 src 下面的文件
+
+```
+tslint.json
+tsconfig.spec.json
+tsconfig.app.json
+test.ts
+polifills.ts
+main.ts
+
+# 复制../karma.conf.js到src目录，并更新
+karma.conf.js
+# 增加browserslist文件
+browserslist
+#更新 environment.ts文件
+```
+
 # 通过编译命令，发现错误，然后逐一修复
 
 ```
