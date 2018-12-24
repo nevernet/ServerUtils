@@ -1,7 +1,6 @@
 # 下载
 
 ```
-wget https://s3.amazonaws.com/bitly-downloads/nsq/nsq-1.0.0-compat.linux-amd64.go1.8.tar.gz
 wget https://s3.amazonaws.com/bitly-downloads/nsq/nsq-1.1.0.linux-amd64.go1.10.3.tar.gz
 tar zxf nsq-1.1.0.linux-amd64.go1.10.3.tar.gz
 mv nsq-1.1.0.linux-amd64.go1.10.3 nsq
