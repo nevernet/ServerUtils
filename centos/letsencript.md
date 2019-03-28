@@ -7,20 +7,22 @@ pyenv global 2.7.13 # 必须先安装pyenv， 请参考 python/pyenv.sh
 ```
 
 # 第一步： 创建 ssl 目录:
-
+```
 mkdir -p /etc/nginx/vhost/ssl
 cd /etc/nginx/vhost/ssl
+```
 
 # 第二部： 安装 certbot:
-
+```
 wget https://dl.eff.org/certbot-auto
 chmod a+x certbot-auto
+```
 
 # ubuntu 下面，很可能会碰到 https://github.com/certbot/certbot/issues/2883
-
+```
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
-
+```
 # 第三步： 生成对应的域名证书（注意：这里需要网站可以通过 http 访问，所以必须先配置所有站点可以访问）
 
 # 把同一个域名的多个站点，生成到一个证书里面.
@@ -54,16 +56,18 @@ export LC_CTYPE="en_US.UTF-8"
 ```
 
 # 第四部：配置 nginx，让 ssl 生效：
-
+```
 ssl on;
 ssl_certificate /etc/letsencrypt/live/api.example.com/fullchain.pem;
 ssl_certificate_key /etc/letsencrypt/live/api.example.com/privkey.pem;
+```
 
 # 第五步：配置 certbot 自动更新证书.
+```
+/etc/nginx/vhost/ssl/certbot-auto renew --quite --post-hook "/etc/init.d/nginx reload"
+```
 
-/etc/nginx/vhost/ssl/certbot-auto renew --quite --post-hook "/etc/init.d/nginx reload”
 配置自动执行（需要先安装 crontab: yum install cronie)：
-
 ```
 0 2 * * * root /etc/nginx/vhost/ssl/certbot-auto renew --post-hook "/etc/init.d/nginx reload"
 0 10 * * * root /etc/nginx/vhost/ssl/certbot-auto renew --post-hook "/etc/init.d/nginx reload"
@@ -73,8 +77,8 @@ ssl_certificate_key /etc/letsencrypt/live/api.example.com/privkey.pem;
 说明： 配置 3 个时间点，每天 2 点，10 点， 18 点执行一次。
 
 重启 crontab:
-service crond restart
+`service crond restart`
 
 # 国内的源由于不全，在更新的时候，可以暂时禁止国内的源，即:
 
-# mv ~/.pip/pip.conf ~/.pip/pip.conf.bak
+`mv ~/.pip/pip.conf ~/.pip/pip.conf.bak`
