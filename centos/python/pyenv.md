@@ -18,7 +18,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-> 如果是  用的是 zsh, 则需要修改.bash_profile 为.zshrc
+> 如果是用的是 zsh, 则需要修改.bash_profile 为.zshrc
 
 For Linux/Centos etc， 安装 python 之前
 
