@@ -56,8 +56,12 @@ gitlab-rake gitlab:backup:create STRATEGY=copy
 
 yum install -y gitlab-ce
 
+# 升级过程需要根据大版本来。 不能跨越大版本
+# https://docs.gitlab.com/ee/policy/maintenance.html#upgrade-recommendations
+
 
 # 修改源。 原始的gitlab.com的源下载很慢
 vim /etc/yum.repos.d/gitlab-ce.repo
 # 修改baseurl为下面地址：
 https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el$releasever/
+# 如果找不到respond.xml.asc 则需要修改 repo_gpgcheck=0
