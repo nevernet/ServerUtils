@@ -41,7 +41,7 @@ service mysql start
 
 ```
 CREATE USER 'root'@'%' IDENTIFIED BY 'abcd@1234';
-GRANT ALL PRIVILEGES ON _._ TO root@'%';
+GRANT ALL PRIVILEGES ON *.* TO root@'%';
 flush privileges;
 ```
 
@@ -76,3 +76,7 @@ sleep 5s
 
 done
 ```
+
+# mysql 的配置，请参见
+
+[centos/mysql/my.cnf](../../centos/mysql/my.cnf)

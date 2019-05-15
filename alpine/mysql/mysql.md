@@ -1,3 +1,5 @@
+# 由于编译不成功，所以废弃在 alpine 安装 mysql, 请参考 [ubuntu-mysql.md](../../ubuntu/mysql/ubuntu-mysql.md)
+
 docker run -itd --privileged -h mysql8 --name mysql8 alpine:v2.1 /bin/bash
 
 apk update
@@ -57,5 +59,3 @@ chown -R mysql:mysql /var/log/mysql
 ```
 
 ./bin/mysqld --initialize-insecure --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
-
-# 由于编译不成功，所以废弃在 alpine 安装 mysql, 请参考 [ubuntu-mysql.md](ubuntu-mysql.md)
