@@ -78,3 +78,9 @@ sudo apt-get autoremove --purge
 # ubuntu 主机禁止 rp_filter 校验：
 
 `for ifn in all default eth0 eth1; do echo 0 > /proc/sys/net/ipv4/conf/\$ifn/rp_filter; done`
+
+# 18.04 修改/etc/resolv.conf
+
+默认情况下， /etc/resolv.conf 是链接到 `/run/systemd/resolve/stub-resolv.conf`,需要修改成： `/run/systemd/resolve/resolv.conf`
+
+`ln -sf /run/systemd/resolve/resolv.conf /etc/resolve.conf`
