@@ -35,21 +35,32 @@ t1lib t1lib-devel
 # 下载，安装 PHP
 
 ```
-wget http://jp2.php.net/distributions/php-5.6.36.tar.gz
-tar zxf php-5.6.36.tar.gz
-cd php-5.6.36
+wget https://www.php.net/distributions/php-7.2.18.tar.gz
+tar zxf php-7.2.18.tar.gz
+cd php-7.2.18
 
 ./configure --prefix=/usr/local  --with-config-file-path=/etc  --enable-fpm --with-openssl  --with-zlib  --enable-bcmath --enable-calendar --with-curl --enable-exif --enable-ftp  --with-gd --with-jpeg-dir --with-png-dir --with-zlib-dir  --with-freetype-dir --enable-gd-native-ttf --with-gettext --with-gmp  --with-mhash  --enable-intl  --enable-mbstring --with-mcrypt  --with-mysql-sock --with-mysqli --with-zlib-dir  --enable-opcache --enable-pcntl  --with-pdo-mysql   --with-libedit --with-readline --enable-sockets --enable-wddx  --with-xmlrpc --with-xsl --enable-zip  --with-pear --with-tidy --with-xpm-dir
 make && make install
 
 # 等安装完成后
 cp php.ini-development /etc/php.ini
+# cp php.ini-production /etc/php.ini
 cd /usr/local/etc
 cp php-fpm.conf.default php-fpm.conf
+cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
 
 mkdir -p /opt/logs/
+mkdir -p /opt/logs/php
+mkdir -p /opt/www/
 
 # 根据情况修改/etc/php.ini和php-fpm.conf的配置
+
+# 创建用户和修改目录权限
+addgroup www
+adduser -G www www
+
+chown -R www:www /opt/logs/php/
+chown -R www:www /opt/www
 
 # 启动
 php-fpm
@@ -100,7 +111,7 @@ apk add libmemcached libmemcached-dev
 
 ```
 pecl install igbinary
-pecl install memcached-2.2.0
+pecl install memcached
 pecl install imagick
 pecl install mongodb
 ```
@@ -109,7 +120,7 @@ pecl install mongodb
 
 ```
 cd ~
-git clone -b phalcon-v2.0.13 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
+git clone -b v3.4.3 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
 cd cphalcon/build
 ./install
 ```
@@ -124,3 +135,12 @@ phpize
 ./configure --enable-redis-igbinary
 make && make install
 ```
+
+# 添加到 /etc/php.ini
+
+extension=igbinary.so
+extension=imagick.so
+extension=memcached.so
+extension=mongodb.so
+extension=phalcon.so
+extension=redis.so
