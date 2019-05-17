@@ -137,3 +137,7 @@ done
 mysql 的配置，请参见
 
 [centos/mysql/my.cnf](../../centos/mysql/my.cnf)
+
+clear os:
+
+`yum clean all`
