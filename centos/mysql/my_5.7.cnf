@@ -1,3 +1,6 @@
+# For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
+
 [mysql]
 #no-auto-rehash
 
@@ -9,9 +12,8 @@ single-transaction
 
 [mysqld]
 # basic settings #
-default-authentication-plugin = mysql_native_password # 启用老版本的密码验证，保证兼容第三方组件和老的5.x的客户端连接
 user = mysql
-sql_mode = "STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,ONLY_FULL_GROUP_BY"
+sql_mode = "STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER"
 autocommit = 1
 server-id = 63406
 character_set_server=utf8mb4
@@ -22,9 +24,9 @@ event_scheduler = 1
 default-storage-engine=INNODB
 
 #basedir=/var/lib/mysql
-# socket=/var/lib/mysql/mysql.sock
+socket=/var/lib/mysql/mysql.sock
 datadir=/opt/mysql/data
-#lc-messages-dir=/usr/share/mysql/
+lc-messages-dir=/usr/share/mysql/
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
@@ -73,7 +75,7 @@ log_queries_not_using_indexes = 1 # 将所有没有使用带索引的查询语�
 log_slow_admin_statements = 1
 log_slow_slave_statements = 1
 log_throttle_queries_not_using_indexes = 10 #每分钟记录到slow log的未使用索引的SQL语句次数，防止slow log日志过大
-binlog_expire_logs_seconds = 86400
+expire_logs_days = 90
 
 binlog_cache_size = 4M
 max_binlog_cache_size = 128M
@@ -87,7 +89,7 @@ log-slave-updates = 1
 
 # innodb settings #
 innodb_page_size = 16384
-innodb_buffer_pool_size = 128M # 如果是独立服务器,该参数尽可能的大,物理内存的70-80% . 如16G内存可以设置12G， 否则设置成10%内存
+innodb_buffer_pool_size = 512M # 如果是独立服务器,该参数尽可能的大,物理内存的70-80% . 如16G内存可以设置12G， 否则设置成10%内存
 innodb_buffer_pool_instances = 1 # Buffer_Pool分成8个缓冲池，每个pool需要大于1G
 innodb_buffer_pool_load_at_startup = 1
 innodb_buffer_pool_dump_at_shutdown = 1
@@ -96,16 +98,18 @@ innodb_lock_wait_timeout = 5 #InnoDB 有其内置的死锁检测机制
 innodb_io_capacity = 800 #告诉MySQL系统每秒能处理IO次数，IO性能高时，可以调高
 innodb_io_capacity_max = 20000
 innodb_flush_method = O_DIRECT #控制Innodb的IO行为
-#innodb_undo_tablespaces = 3
+innodb_undo_logs = 128
+innodb_undo_tablespaces = 3
 innodb_flush_neighbors = 0
-innodb_log_file_size = 50M
+innodb_log_file_size = 1G
 innodb_log_files_in_group = 2 #日志组中的日志文件数目
-#innodb_data_home_dir=/opt/mysql/innodb_file/ #InnoDB表的目录共用设置
-innodb_data_file_path=ibdata1:100M:autoextend  #单独指定数据文件的路径与大小
-#innodb_log_group_home_dir=/opt/mysql/innodb_file/ #指定innodb自己的日志文件保存路径
+innodb_data_home_dir=/opt/mysql/innodb_file/ #InnoDB表的目录共用设置
+innodb_data_file_path=ibdata1:4G:autoextend  #单独指定数据文件的路径与大小
+innodb_log_group_home_dir=/opt/mysql/innodb_file/ #指定innodb自己的日志文件保存路径
 innodb_log_buffer_size = 16M # 该参数16M是比较好的选择
 innodb_purge_threads = 4 #回收日志线程和主线程分开
 innodb_purge_batch_size=300            #每次处理删除脏页的数量
+innodb_large_prefix = 1
 innodb_thread_concurrency = 4 # 进入内核线程数：<=CPU数量*磁盘数量*2  过高的值可能导致线程的互斥颠簸
 innodb_print_all_deadlocks = 1
 innodb_strict_mode = 1
@@ -133,14 +137,14 @@ slave_skip_errors = ddl_exist_errors
 slave-rows-search-algorithms = 'INDEX_SCAN,HASH_SCAN'
 
 # semi sync replication settings #
-plugin-load = "group_replication.so;semisync_master.so;semisync_slave.so"
+plugin-load = "group_replication.so;validate_password.so;semisync_master.so;semisync_slave.so"
 #loose_rpl_semi_sync_master_enabled = 1
 #loose_rpl_semi_sync_master_timeout = 3000
 #loose_rpl_semi_sync_slave_enabled = 1
 
 # password plugin #
 #validate_password_policy = STRONG
-#validate-password = FORCE_PLUS_PERMANENT
+validate-password = FORCE_PLUS_PERMANENT
 
 # perforamnce_schema settings
 # performance-schema-instrument='memory/%=COUNTED'
@@ -149,6 +153,14 @@ plugin-load = "group_replication.so;semisync_master.so;semisync_slave.so"
 # performance_schema_max_sql_text_length = 4096
 # performance_schema_max_digest_length = 4096
 
+[mysqld-5.7]
+# new innodb settings #
+loose_innodb_numa_interleave = 1
+innodb_buffer_pool_dump_pct = 40
+innodb_page_cleaners = 16
+innodb_undo_log_truncate = 1
+innodb_max_undo_log_size = 2G
+innodb_purge_rseg_truncate_frequency = 128
 
 # new replication settings #
 slave-parallel-type = LOGICAL_CLOCK
@@ -158,6 +170,7 @@ slave_transaction_retries = 128
 # other change settings #
 binlog_gtid_simple_recovery = 1
 log_timestamps = system
+show_compatibility_56 = on
 
 # group replication settings
 plugin-load = "group_replication.so;semisync_master.so;semisync_slave.so"

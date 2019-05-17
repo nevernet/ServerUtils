@@ -34,6 +34,7 @@ sysctl -w net.ipv4.ip_forward=1
 sysctl -p
 
 sshd 服务
+yum install -y openssh-client openssh-server
 vim /etc/ssh/sshd_config
 Port xx # 更换一个端口
 PertRootLogin yes|no
@@ -44,3 +45,6 @@ UseDNS no
 # 重启 并重新登录
 service sshd start
 chkconfig sshd on
+
+时区修改
+echo "yes" | cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
