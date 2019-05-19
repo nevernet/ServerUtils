@@ -107,7 +107,7 @@ chkconfig mysqld on
 
 ```
 CREATE USER 'root'@'%' IDENTIFIED BY 'Abcd@1234'; # 这是默认密码
-GRANT ALL PRIVILEGES ON _._ TO root@'%';
+GRANT ALL PRIVILEGES ON *.* TO root@'%';
 flush privileges;
 ```
 
@@ -141,3 +141,54 @@ mysql 的配置，请参见
 clear os:
 
 `yum clean all`
+
+# MGR 集群配置
+
+第一步 所有节点执行：
+
+```
+create user 'replication'@'%' identified by 'yourpassword';
+grant replication slave, replication client on *.* to 'replication'@'%';
+flush privileges;
+CHANGE MASTER TO MASTER_USER='replication', MASTER_PASSWORD='yourpassword' FOR CHANNEL 'group_replication_recovery';
+
+```
+
+第二步：主节点执行：
+
+```
+set global group_replication_bootstrap_group=on;
+start group_replication;
+set global group_replication_bootstrap_group=off;
+
+```
+
+第三步：所有从节点执行：
+(如果不小心加入了其他节点，则可以`reset master;`，在重新执行 change master 即可）
+
+```
+reset master;
+CHANGE MASTER TO MASTER_USER='replication', MASTER_PASSWORD='yourpassword' FOR CHANNEL 'group_replication_recovery';
+start group_replication;
+
+```
+
+```
+start group_replication;
+```
+
+查看各种状态：
+查看变量：
+show global variables like 'group%';
+
+查看状态：
+`select * from performance_schema.replication_group_members;`
+
+查看是否可写：
+show global variables like 'super%';
+
+获取当前可写节点：
+
+```
+SELECT * FROM performance_schema.replication_group_members WHERE MEMBER_ID = (SELECT VARIABLE_VALUE FROM performance_schema.global_status WHERE VARIABLE_NAME= 'group_replication_primary_member');
+```

@@ -1,7 +1,7 @@
 # 安装工具
 
 ```
-apk add gcc g++ make cmake autoconf git wget
+apk add gcc g++ make cmake autoconf git wget rsync
 ```
 
 # 安装 mhash
@@ -52,6 +52,7 @@ cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
 mkdir -p /opt/logs/
 mkdir -p /opt/logs/php
 mkdir -p /opt/www/
+mkdir -p /opt/files/
 
 # 根据情况修改/etc/php.ini和php-fpm.conf的配置
 
@@ -61,6 +62,7 @@ adduser -G www www
 
 chown -R www:www /opt/logs/php/
 chown -R www:www /opt/www
+chown -R www:www /opt/files
 
 # 启动
 php-fpm

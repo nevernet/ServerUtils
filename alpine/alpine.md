@@ -24,7 +24,7 @@ touch /run/openrc/softlevel
 # 安装 openssh-server
 
 ```
-apk add openssh-server openssh-client
+apk add openssh-server openssh-client rsync
 rc-update add sshd default
 rc-service sshd restart
 rc-status
@@ -70,4 +70,21 @@ vi /etc/passwd
 
 ```
 docker run  -itd --privileged -h demo --name demo alpine:latest /bin/bash
+```
+
+有的时候会报错误：`/lib/rc/sh/openrc-run.sh: line 273: can't create /sys/fs/cgroup/freezer/tasks: Read-only file system`
+
+```
+docker run  -itd -v /sys/fs/cgroup:/sys/fs/cgroup --privileged -h demo --name demo alpine:latest /bin/bash
+```
+
+# vi ~/.vimrc
+
+中文支持和行号
+
+```
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+set nu
 ```
