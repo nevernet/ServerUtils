@@ -1,7 +1,7 @@
 # 安装工具
 
 ```
-apk add gcc g++ make cmake autoconf git wget rsync
+apk add gcc g++ make cmake autoconf git wget rsync libc-dev pkgconf re2c zlib-dev libmemcached-dev
 ```
 
 # 安装 mhash
@@ -17,8 +17,11 @@ make install
 
 # 安装 php 依赖的其他包
 
+必须手动编译 curl， libcurl，因为 alpine 下的 curl 默认是基于 libressl 的，会到跟 php 的 openssl 冲突，
+具体编译参见：[../curl/curl.md](../curl/curl.md)
+
 ```
-apk add curl curl-dev openssl openssl-dev gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev
+apk add openssl openssl-dev gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev
 ```
 
 # 未确认的包：
@@ -39,7 +42,45 @@ wget https://www.php.net/distributions/php-7.2.18.tar.gz
 tar zxf php-7.2.18.tar.gz
 cd php-7.2.18
 
-./configure --prefix=/usr/local  --with-config-file-path=/etc  --enable-fpm --with-openssl  --with-zlib  --enable-bcmath --enable-calendar --with-curl --enable-exif --enable-ftp  --with-gd --with-jpeg-dir --with-png-dir --with-zlib-dir  --with-freetype-dir --enable-gd-native-ttf --with-gettext --with-gmp  --with-mhash  --enable-intl  --enable-mbstring --with-mcrypt  --with-mysql-sock --with-mysqli --with-zlib-dir  --enable-opcache --enable-pcntl  --with-pdo-mysql   --with-libedit --with-readline --enable-sockets --enable-wddx  --with-xmlrpc --with-xsl --enable-zip  --with-pear --with-tidy --with-xpm-dir
+./configure --prefix=/usr/local  \
+    --with-config-file-path=/etc  \
+    --enable-fpm \
+    --build=x86_64-linux-musl \
+    build_alias=x86_64-linux-musl \
+    --with-zlib  \
+    --with-openssl \
+    --enable-bcmath \
+    --enable-calendar \
+    --with-curl \
+    --enable-exif \
+    --enable-ftp  \
+    --with-gd \
+    --with-iconv \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib-dir  \
+    --with-freetype-dir \
+    --with-gettext \
+    --with-gmp  \
+    --with-mhash  \
+    --enable-intl  \
+    --enable-mbstring \
+    --with-mysql-sock \
+    --with-mysqli \
+    --with-zlib-dir  \
+    --enable-opcache \
+    --enable-pcntl \
+    --enable-sockets  \
+    --with-pdo-mysql   \
+    --with-libedit \
+    --with-readline \
+    --enable-wddx  \
+    --with-xmlrpc \
+    --with-xsl \
+    --enable-zip  \
+    --with-pear \
+    --with-tidy \
+    --with-xpm-dir
 make && make install
 
 # 等安装完成后
@@ -113,6 +154,7 @@ apk add libmemcached libmemcached-dev
 
 ```
 pecl install igbinary
+pecl install msgpack
 pecl install memcached
 pecl install imagick
 pecl install mongodb

@@ -4,9 +4,9 @@
 apk add libevent-dev wget gcc g++ make
 
 cd ~
-wget http://memcached.org/latest
-tar -zxvf latest
-cd memcached-1.x.x
+wget http://memcached.org/files/memcached-1.5.15.tar.gz
+tar -zxvf memcached-1.5.15.tar.gz
+cd memcached-1.5.15
 ./configure && make && make install
 ```
 

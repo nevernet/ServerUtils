@@ -34,7 +34,7 @@ git checkout -b v3.0.4
 make clean
 make distclean
 phpize
-./configure --enable-memcached-igbinary --disable-memcached-sasl
+./configure --enable-memcached-igbinary --enable-memcached-msgpack --disable-memcached-session --disable-memcached-sasl --enable-debug
 make && make install
 
 # mac安装，如果提示找不到zlib的时候，需要把lib和include目录做一个软连接到系统目录：
