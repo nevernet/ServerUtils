@@ -78,7 +78,11 @@ sudo apt-get autoremove --purge
 
 # ubuntu 主机禁止 rp_filter 校验：
 
+如果没有 eth1 就去掉
 `for ifn in all default eth0 eth1; do echo 0 > /proc/sys/net/ipv4/conf/\$ifn/rp_filter; done`
+
+查看
+`sysctl -a | grep rp_filter`
 
 # 18.04 修改/etc/resolv.conf
 

@@ -1,6 +1,7 @@
 # 安装 pyenv
 
 ## 更新
+
 ```
 apk update
 ```
@@ -10,7 +11,7 @@ apk update
 # 安装工具
 
 ```
-apk add gcc make g++ sqlite-dev bzip2-dev openssl openssl-dev readline-dev zlib-dev libressl
+apk add gcc make g++ sqlite-dev bzip2-dev openssl openssl-dev readline-dev zlib-dev libressl rsync
 ```
 
 ## 安装 pyenv
@@ -43,13 +44,13 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 可以通过 `pyenv install --list` 来查看有哪些提供的版本
 
 ```
-pyenv install 2.7.15
+pyenv install 2.7.16
 ```
 
 设置全局的版本:
 
 ```
-pyenv global 2.7.15
+pyenv global 2.7.16
 python -V
 ```
 
@@ -78,4 +79,12 @@ pip install MySQL-python
 ```
 cd ~/.pyenv
 git pull
+```
+
+# supervisor
+
+```
+mkdir -p /var/log/supervisord
+cp supervisord.conf /etc/supervisord.conf # 复制supervisord.conf
+/root/.pyenv/shims/supervisord -c /etc/supervisord.conf
 ```
