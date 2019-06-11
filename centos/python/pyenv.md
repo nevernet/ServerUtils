@@ -47,6 +47,15 @@ pyenv global 2.7.15
 python -V
 ```
 
+同时设置 py2 和 py3
+
+```
+pyenv global 3.7.3 2.7.15
+python -V
+python2 -V
+
+```
+
 临时设置本次 shell 环境
 
 ```

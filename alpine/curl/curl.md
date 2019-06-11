@@ -8,11 +8,26 @@ apk add openssl openssl-dev
 
 [https://curl.haxx.se/download.html](https://curl.haxx.se/download.html)
 
+```
+cd ~
+wget https://curl.haxx.se/download/curl-7.64.1.tar.gz
+tar zxf curl-7.64.1.tar.gz
+```
+
 编译:
 
 ```
+cd curl-7.64.1
 ./configure --with-ssl
 make && make install
+```
+
+编译结束后可以看到：
+
+```
+...
+SSL:              enabled (OpenSSL)
+...
 ```
 
 > 编译参考 [https://curl.haxx.se/docs/install.html](https://curl.haxx.se/docs/install.html)
