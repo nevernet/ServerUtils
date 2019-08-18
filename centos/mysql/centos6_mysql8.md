@@ -1,22 +1,22 @@
 下载
 
 ```
-wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.16-2.el6.x86_64.rpm-bundle.tar
-tar xvf mysql-8.0.16-2.el6.x86_64.rpm-bundle.tar # 会解压出来很多 rpm 文件
+wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.17-1.el6.x86_64.rpm-bundle.tar
+tar xvf mysql-8.0.17-1.el6.x86_64.rpm-bundle.tar # 会解压出来很多 rpm 文件
 ```
 
 解压出来的文件:
 
 ```
-mysql-community-test-8.0.16-2.el6.x86_64.rpm
-mysql-community-embedded-8.0.16-2.el6.x86_64.rpm
-mysql-community-embedded-devel-8.0.16-2.el6.x86_64.rpm
-mysql-community-server-8.0.16-2.el6.x86_64.rpm
-mysql-community-libs-compat-8.0.16-2.el6.x86_64.rpm
-mysql-community-devel-8.0.16-2.el6.x86_64.rpm
-mysql-community-client-8.0.16-2.el6.x86_64.rpm
-mysql-community-libs-8.0.16-2.el6.x86_64.rpm
-mysql-community-common-8.0.16-2.el6.x86_64.rpm
+mysql-community-test-8.0.17-1.el6.x86_64.rpm
+mysql-community-embedded-8.0.17-1.el6.x86_64.rpm
+mysql-community-embedded-devel-8.0.17-1.el6.x86_64.rpm
+mysql-community-server-8.0.17-1.el6.x86_64.rpm
+mysql-community-libs-compat-8.0.17-1.el6.x86_64.rpm
+mysql-community-devel-8.0.17-1.el6.x86_64.rpm
+mysql-community-client-8.0.17-1.el6.x86_64.rpm
+mysql-community-libs-8.0.17-1.el6.x86_64.rpm
+mysql-community-common-8.0.17-1.el6.x86_64.rpm
 ```
 
 查看已经安装的版本：
@@ -52,13 +52,13 @@ yum remove -y mariadb-libs*
 
 ```
 yum install -y numactl perl-JSON perl-Time-HiRes libaio initscripts
-rpm -ivh mysql-community-common-8.0.16-2.el6.x86_64.rpm
-rpm -ivh mysql-community-libs-8.0.16-2.el6.x86_64.rpm
-rpm -ivh mysql-community-client-8.0.16-2.el6.x86_64.rpm
-rpm -ivh mysql-community-devel-8.0.16-2.el6.x86_64.rpm
-rpm -ivh mysql-community-libs-compat-8.0.16-2.el6.x86_64.rpm
-rpm -ivh mysql-community-server-8.0.16-2.el6.x86_64.rpm
-# rpm -ivh mysql-community-test-8.0.16-2.el6.x86_64.rpm
+rpm -ivh mysql-community-common-8.0.17-1.el6.x86_64.rpm
+rpm -ivh mysql-community-libs-8.0.17-1.el6.x86_64.rpm
+rpm -ivh mysql-community-client-8.0.17-1.el6.x86_64.rpm
+rpm -ivh mysql-community-devel-8.0.17-1.el6.x86_64.rpm
+rpm -ivh mysql-community-libs-compat-8.0.17-1.el6.x86_64.rpm
+rpm -ivh mysql-community-server-8.0.17-1.el6.x86_64.rpm
+# rpm -ivh mysql-community-test-8.0.17-1.el6.x86_64.rpm
 ```
 
 创建目录

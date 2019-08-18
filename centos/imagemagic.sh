@@ -9,8 +9,10 @@ yum -y install bzip2-devel freetype-devel libjpeg-devel libpng-devel libtiff-dev
 # wget http://www.imagemagick.org/download/ImageMagick.tar.gz
 tar xvzf ImageMagick.tar.gz
 
-wget https://www.imagemagick.org/download/releases/ImageMagick-6.9.9-38.zip
-unzip ImageMagick-6.9.9-38.zip
+# 源码安装 6.9.x版本
+cd ~
+wget https://www.imagemagick.org/download/releases/ImageMagick-6.9.10-60.tar.gz
+tar -zxf ImageMagick-6.9.10-60.tar.gz
 cd ImageMagick*
 
 ./configure
