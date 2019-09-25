@@ -37,13 +37,14 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 可以通过 `pyenv install --list` 来查看有哪些提供的版本
 
 ```
-pyenv install 2.7.15
+pyenv install 2.7.16
+pyenv install 3.7.4
 ```
 
 设置全局的版本:
 
 ```
-pyenv global 2.7.15
+pyenv global 3.7.4
 python -V
 ```
 

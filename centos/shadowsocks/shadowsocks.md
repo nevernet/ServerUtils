@@ -5,7 +5,7 @@
 # 安装 shadowsocks
 
 yum install python-setuptools && easy_install pip
-pip install shadowsocks
+pip install shadowsocks supervisor
 
 cp shadowsocks.json /etc/shadowsocks.json
 

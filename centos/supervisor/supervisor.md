@@ -18,7 +18,7 @@ cp supervisord.conf /etc/supervisord.conf
 
 # add to auto start when system on
 
-`echo 'supervisord -c /etc/supervisord.conf' >> /etc/rc.d/rc.local`
+`echo '/root/.pyenv/shims/supervisord -c /etc/supervisord.conf' >> /etc/rc.d/rc.local`
 
 # Supervisord 安装完成后有两个可用的命令行 supervisord 和 supervisorctl，命令使用解释如下：
 
