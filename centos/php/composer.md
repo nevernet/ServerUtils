@@ -1,5 +1,14 @@
 # 所有项目都会使用该镜像地址：
 
+先清除缓存
+
+```
+composer clearcache
+rm -rf vendor
+```
+
+设置镜像
+
 ```
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
