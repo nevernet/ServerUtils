@@ -3,7 +3,7 @@
 echo "yes" | cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 
-# 安装
+# 安装 以下脚本基于 centos 7操作
 wget https://install.direct/go.sh
 sudo bash go.sh
 sudo systemctl start v2ray
