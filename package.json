@@ -27,7 +27,9 @@
     }
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.0.2"
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.1.0",
+    "validate-commit-msg": "^2.14.0"
   },
   "config": {
     "commitizen": {

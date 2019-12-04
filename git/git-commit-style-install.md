@@ -4,7 +4,7 @@
 
 ```
 npm init
-npm install -g commitizen conventional-changelog conventional-changelog-cli conventional-commits-detector conventional-recommended-bump husky validate-commit-msg standard-version
+npm install -g commitizen conventional-changelog conventional-changelog-cli conventional-commits-detector conventional-recommended-bump  standard-version
 ```
 
 ## 初始化项目的的 commitizen 信息
@@ -15,7 +15,15 @@ commitizen init cz-conventional-changelog --save --save-exact
 
 之后就可以 在提交的时候就可以使用 git cz 就可以根据提示，生成自动化的 commit message
 
-## 在 package.json 中添加验证节点：
+## 安装 git commit message 的信息验证
+
+### 安装， 在项目的根目录，并且一定是 git 初始化之后的目录
+
+```
+npm install husky validate-commit-msg --save-dev
+```
+
+### 在 package.json 中添加验证节点：
 
 ```
 "husky": {
