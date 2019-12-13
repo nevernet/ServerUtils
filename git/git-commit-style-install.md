@@ -34,13 +34,13 @@ npm install husky validate-commit-msg --save-dev
 
 ```
 "scripts": {
-    "release-f": "standard-version -f",
-    "release-major": "standard-version -r major",
-    "release-minor": "standard-version -r minor",
-    "release-patch": "standard-version -r patch",
-    "prerelease-major": "standard-version -p major",
-    "prerelease-minor": "standard-version -p minor",
-    "prerelease-patch": "standard-version -p patch",
+    "first": "standard-version -f",
+    "major": "standard-version -r major",
+    "minor": "standard-version -r minor",
+    "patch": "standard-version -r patch",
+    "pmajor": "standard-version -p major",
+    "pminor": "standard-version -p minor",
+    "ppatch": "standard-version -p patch",
 }
 ```
 
