@@ -28,7 +28,9 @@ commitizen init cz-conventional-changelog --save --save-exact
 npm install husky validate-commit-msg --save-dev
 ```
 
-## 3 standard-version 配置，在 scripts 里面配置
+## 3 standard-version 配置，在 scripts 里面配置.
+
+同时复制 `.versionrc.json`到项目里面
 
 ```
 "scripts": {
