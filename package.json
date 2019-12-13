@@ -27,21 +27,20 @@
     }
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.0.2",
-    "husky": "^3.1.0",
-    "validate-commit-msg": "^2.14.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
     "commitizen": "^4.0.3",
     "conventional-changelog": "^3.1.15",
     "conventional-changelog-cli": "^2.0.28",
     "conventional-commits-detector": "^1.0.2",
     "conventional-recommended-bump": "^6.0.5",
-    "standard-version": "^7.0.1"
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.1.0",
+    "standard-version": "^7.0.1",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

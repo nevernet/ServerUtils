@@ -1,13 +1,18 @@
 # git commit style 规范化
 
-## 初始化 package.json(非 js 项目）和全局安装
+## 1 初始化 package.json(非 js 项目）
 
 ```
 npm init
-npm install commitizen conventional-changelog conventional-changelog-cli conventional-commits-detector conventional-recommended-bump  standard-version
 ```
 
-## 初始化项目的的 commitizen 信息
+安装依赖
+
+```
+npm install commitizen conventional-changelog conventional-changelog-cli conventional-commits-detector conventional-recommended-bump  standard-version --save-dev
+```
+
+### 1.1 初始化项目的的 commitizen 信息
 
 ```
 commitizen init cz-conventional-changelog --save --save-exact
@@ -15,25 +20,15 @@ commitizen init cz-conventional-changelog --save --save-exact
 
 之后就可以 在提交的时候就可以使用 git cz 就可以根据提示，生成自动化的 commit message
 
-## 安装 git commit message 的信息验证
+## 2 安装 git commit message 的信息验证
 
-### 安装， 在项目的根目录，并且一定是 git 初始化之后的目录
+### 2.1 安装， 在项目的根目录，并且一定是 git 初始化之后的目录
 
 ```
 npm install husky validate-commit-msg --save-dev
 ```
 
-### 在 package.json 中添加验证节点：
-
-```
-"husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg"
-    }
-  }
-```
-
-## standard-version 配置，在 scripts 里面配置
+## 3 standard-version 配置，在 scripts 里面配置
 
 ```
 "scripts": {
@@ -47,7 +42,7 @@ npm install husky validate-commit-msg --save-dev
 }
 ```
 
-## 自动生成 CHANGELOG.md，生成之前，都必须增加版本号
+### 3.1 自动生成 CHANGELOG.md，生成之前，都必须增加版本号
 
 ```
 # 全新生成
@@ -66,7 +61,7 @@ conventional-changelog -p angular -i CHANGELOG.md -s
 }
 ```
 
-## 汇总，日常情况下，我们只需要操作
+## 4 汇总，日常情况下，我们只需要操作
 
 第一次 请执行 `npm run changelog-1`
 
