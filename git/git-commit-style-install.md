@@ -4,7 +4,7 @@
 
 ```
 npm init
-npm install -g commitizen conventional-changelog conventional-changelog-cli conventional-commits-detector conventional-recommended-bump  standard-version
+npm install commitizen conventional-changelog conventional-changelog-cli conventional-commits-detector conventional-recommended-bump  standard-version
 ```
 
 ## 初始化项目的的 commitizen 信息
