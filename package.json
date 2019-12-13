@@ -1,6 +1,6 @@
 {
   "name": "serverutils",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "common usefull scripts",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "release-major": "standard-version -r major",
     "release-minor": "standard-version -r minor",
     "release-patch": "standard-version -r patch",
+    "patch": "standard-version -r patch",
     "prerelease-major": "standard-version -p major",
     "prerelease-minor": "standard-version -p minor",
     "prerelease-patch": "standard-version -p patch",
