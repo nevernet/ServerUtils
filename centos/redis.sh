@@ -8,8 +8,7 @@ cd ~
 wget http://download.redis.io/releases/redis-5.0.7.tar.gz
 tar xzf redis-5.0.7.tar.gz
 cd redis-5.0.7
-make
-make install
+make && make install
 
 
 # 配置参考 alpine/redis/redis.conf

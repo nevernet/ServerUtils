@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# 安装方式二： 如果yum安装速度很慢，则可以通过下载bundle.tar文件来安装，这个是把所有rpm包打包后的文件
+wget http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/MySQL-8.0/mysql-8.0.18-1.el7.x86_64.rpm-bundle.tar
+tar xvf mysql-8.0.18-1.el7.x86_64.rpm-bundle.tar # 会解压出来很多rpm文件
+
+mysql-community-libs-8.0.18-1.el7.x86_64.rpm
+mysql-community-devel-8.0.18-1.el7.x86_64.rpm
+mysql-community-embedded-compat-8.0.18-1.el7.x86_64.rpm
+mysql-community-libs-compat-8.0.18-1.el7.x86_64.rpm
+mysql-community-common-8.0.18-1.el7.x86_64.rpm
+mysql-community-test-8.0.18-1.el7.x86_64.rpm
+mysql-community-server-8.0.18-1.el7.x86_64.rpm
+mysql-community-client-8.0.18-1.el7.x86_64.rpm
+
+# 删除老版本：
+# 查看已经安装的版本：
+rpm -qa | grep -i mysql
+# mysql-community-common-8.0.18-1.el7.x86_64
+# mysql-community-client-8.0.18-1.el7.x86_64
+# mysql-community-libs-compat-8.0.18-1.el7.x86_64
+# mysql-community-embedded-8.0.18-1.el7.x86_64
+# mysql-community-libs-8.0.18-1.el7.x86_64
+# mysql-community-devel-8.0.18-1.el7.x86_64
+# mysql-community-embedded-devel-8.0.18-1.el7.x86_64
+# mysql-community-server-8.0.18-1.el7.x86_64
+
+# 按顺序删除
+ rpm -e mysql-community-common-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-server-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-embedded-devel-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-devel-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-embedded-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-libs-compat-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-client-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-libs-8.0.18-1.el7.x86_64
+ rpm -e mysql-community-common-8.0.18-1.el7.x86_64
+
+ # 再次查看
+ rpm -qa | grep -i mysql
+
+# 删除
+yum remove -y mysql-libs*
+yum remove -y mariadb-libs*
+
+# 安装顺序:
+yum install -y numactl perl-JSON perl-Time-HiRes libaio initscripts pkgconfig pkgconfig\(openssl\) net-tools
+rpm -ivh mysql-community-common-8.0.18-1.el7.x86_64.rpm
+rpm -ivh mysql-community-libs-8.0.18-1.el7.x86_64.rpm
+rpm -ivh mysql-community-client-8.0.18-1.el7.x86_64.rpm
+rpm -ivh mysql-community-devel-8.0.18-1.el7.x86_64.rpm
+rpm -ivh mysql-community-libs-compat-8.0.18-1.el7.x86_64.rpm
+rpm -ivh mysql-community-server-8.0.18-1.el7.x86_64.rpm
+rpm -ivh mysql-community-embedded-compat-8.0.18-1.el7.x86_64.rpm
+
+
+
+# 启动
+systemctl start mysqld.service
+systemctl enable mysqld.service
+
+#从vim /etc/my.cnf找到默认的日志文件
+#从log里面找到默认的初始密码：
+vim /var/log/mysqld.log
+# 如果找不到密码：
+# 1 在/etc/my.cnf 添加:
+# skip-grant-tables，重启MySQL
+# 2 登录MySQL，然后在修改默认密码：
+# update mysql.user set authentication_string=password('new_password') where user='root' and Host ='localhost';
+#（注意修改where条件）
+# 3 从/etc/my.cnf里面移除: skip-grant-tables，重启mysql
+# 4 再执行mysql_secure_installation初始化
+
+# 安全配置
+mysql_secure_installation
