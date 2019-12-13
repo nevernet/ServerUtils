@@ -1,6 +1,6 @@
 {
   "name": "serverutils",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "common usefull scripts",
   "main": "index.js",
   "scripts": {
