@@ -69,10 +69,10 @@ conventional-changelog -p angular -i CHANGELOG.md -s
 
 ```
 npm run changelog
-npm run release-major
-npm run release-minor
-npm run release-patch
-npm run prerelease-major
-npm run prerelease-minor
-npm run prerelease-patch
+npm run major
+npm run minor
+npm run patch
+npm run pmajor
+npm run pminor
+npm run ppatch
 ```
