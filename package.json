@@ -1,6 +1,6 @@
 {
   "name": "serverutils",
-  "version": "1.4.0-patch.2",
+  "version": "1.4.0",
   "description": "common usefull scripts",
   "main": "index.js",
   "scripts": {
