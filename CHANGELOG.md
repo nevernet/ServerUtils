@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/nevernet/ServerUtils/compare/v1.0.0...v1.0.1) (2019-12-13)
+
+
+### Bug Fixes
+
+* 删除changelog里面不规范的提交 ([67f5be1](https://github.com/nevernet/ServerUtils/commit/67f5be159f005e9f845138c9503384cfd81b5379))
+
 ## 1.0.0 (2019-12-13)
 
 ### Features
