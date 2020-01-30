@@ -83,7 +83,7 @@ ssl_certificate_key /root/.acme.sh/*.example.com/*.example.com.key;
 如果没有，则通过 `crontab -e` 来添加
 
 ```
-32 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
+32 0 * * * /root/.acme.sh/acme.sh --cron --home "/root/.acme.sh" --reloadcmd "rc-service nginx reload" > /dev/null
 ```
 
 确保启动的时候启动`crond`进程： `vim ~/init.sh`
