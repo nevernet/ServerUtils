@@ -60,10 +60,16 @@ apk add tzdata
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
 
-# 修改/etc/passwd
+# 修改/etc/passwd `vi /etc/passwd`
+
+确保 `root` 的登录是: `/bin/bash`
+
+# 修改 `vi ~/.bashrc`
+
+确保有：
 
 ```
-vi /etc/passwd
+source /etc/profile.d/bash_completion.sh
 ```
 
 # docker run demo
