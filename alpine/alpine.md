@@ -94,3 +94,12 @@ set termencoding=utf-8
 set encoding=utf-8
 set nu
 ```
+
+# 默认加载 `.bashrc`
+
+```
+cd ~
+vi .profile
+# 添加内容
+source .bashrc
+```
