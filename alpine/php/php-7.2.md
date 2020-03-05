@@ -182,9 +182,11 @@ make && make install
 
 # 添加到 /etc/php.ini
 
+```
 extension=igbinary.so
 extension=imagick.so
 extension=memcached.so
 extension=mongodb.so
 extension=phalcon.so
 extension=redis.so
+```
