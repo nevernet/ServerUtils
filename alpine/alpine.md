@@ -1,50 +1,92 @@
 # alpine 安装相关
 
-替换源:
+## 一、用最新版本的 alpine 制作 docker 镜像：
+
+1. 更新 alpine 到最新版本
+   `docker pull alpine:latest`
+
+2. 重新制作镜像(osx)
+
+```bash
+   docker run -itd -v /sys/fs/cgroup:/sys/fs/cgroup --privileged -h alpine-image --name alpine-image alpine:latest /bin/ash
+```
+
+第一次执行的时候只有`/bin/ash`
+
+### docker run demo
+
+```bash
+docker run  -itd --privileged -h demo --name demo alpine:latest /bin/bash
+```
+
+有的时候会报错误：`/lib/rc/sh/openrc-run.sh: line 273: can't create /sys/fs/cgroup/freezer/tasks: Read-only file system`
+
+```bash
+docker run  -itd -v /sys/fs/cgroup:/sys/fs/cgroup --privileged -h demo --name demo alpine:latest /bin/bash
+```
+
+第一次进入容器：
+
+```bash
+docker exec -it 63647824ac06 /bin/ash
+```
+
+当配置好`bash`后则可以：
 
 ```
+docker exec -it 63647824ac06 /bin/bash
+```
+
+## 二、配置和安装软件
+
+替换源:
+
+```bash
 vi /etc/apk/repositories
 # 把原来的注释掉
 #http://dl-cdn.alpinelinux.org/alpine/v3.7/main
 #http://dl-cdn.alpinelinux.org/alpine/v3.7/community
+
 # 添加新的国内源
-https://mirrors.ustc.edu.cn/alpine/v3.7/main
-https://mirrors.ustc.edu.cn/alpine/v3.7/community
+https://mirrors.ustc.edu.cn/alpine/v3.11/main
+https://mirrors.ustc.edu.cn/alpine/v3.11/community
 ```
 
 执行: `apk update`
 
-# 安装 openrc, 提供命令：rc-service, rc-update, rc-status 等
+### 安装 openrc, 提供命令：rc-service, rc-update, rc-status 等
 
-```
+```bash
 apk add openrc
+mkdir -p /run/openrc
 touch /run/openrc/softlevel
 ```
 
-# 安装 openssh-server
+### 安装 openssh-server
 
-```
+```bash
 apk add openssh-server openssh-client rsync
 rc-update add sshd default
 rc-service sshd restart
 rc-status
 
 # 配置文件修改：
-vim /etc/ssh/sshd_config
+vi /etc/ssh/sshd_config
 ```
 
-# 安装
+### 安装软件
 
-```
+```bash
 apk add git wget bash bash-completion netcat-openbsd
 ```
 
-# 基础设置
+### 网络设置
 
-```
-# https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-dns
+```bash
+#https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-dns
 
 vi /etc/network/interfaces
+
 # 添加：
 auto lo
 iface lo inet loopback
@@ -53,53 +95,54 @@ auto eth0
 iface eth0 inet dhcp
 ```
 
-# 时区设置
+### 时区设置
 
-```
+```bash
 apk add tzdata
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
 
-# 修改/etc/passwd `vi /etc/passwd`
+### 修改/etc/passwd `vi /etc/passwd`
 
 确保 `root` 的登录是: `/bin/bash`
 
-# 修改 `vi ~/.bashrc`
+### 默认加载 `.bashrc`
 
-确保有：
-
+```bash
+cd ~
+vi .profile
+# 添加内容
+source .bashrc
 ```
+
+### 修改 `vi ~/.bashrc`
+
+```bash
+alias update='apk update && apk upgrade'
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export PS1='\u@\h:\W \$ '
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
 source /etc/profile.d/bash_completion.sh
 ```
 
-# docker run demo
-
-```
-docker run  -itd --privileged -h demo --name demo alpine:latest /bin/bash
-```
-
-有的时候会报错误：`/lib/rc/sh/openrc-run.sh: line 273: can't create /sys/fs/cgroup/freezer/tasks: Read-only file system`
-
-```
-docker run  -itd -v /sys/fs/cgroup:/sys/fs/cgroup --privileged -h demo --name demo alpine:latest /bin/bash
-```
-
-# vi ~/.vimrc
+### vi ~/.vimrc
 
 中文支持和行号
 
-```
+```bash
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 set nu
 ```
 
-# 默认加载 `.bashrc`
+# 提交到镜像
 
 ```
-cd ~
-vi .profile
-# 添加内容
-source .bashrc
+docker commit -m="alpine 3.11镜像" -a="Daniel Qin" 63647824ac06 alpine:v3
 ```
+
+通过`docker images`查看，就有了`alpine v3`的镜像

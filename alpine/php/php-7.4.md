@@ -1,3 +1,13 @@
+# 启动 php 7.4 镜像容器
+
+```bash
+docker run -itd -v /sys/fs/cgroup:/sys/fs/cgroup --privileged -h php74 --name php74 alpine:v3 /bin/bash
+
+# 进入容器
+docker exec -it 4720d3018066 /bin/bash
+
+```
+
 # 安装工具
 
 ```bash
@@ -23,7 +33,7 @@ make install
 具体编译参见：[../curl/curl.md](../curl/curl.md)
 
 ```bash
-apk add openssl openssl-dev gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev
+apk add openssl openssl-dev gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev sqlite sqlite-dev oniguruma oniguruma-dev
 ```
 
 # 未确认的包：
@@ -41,9 +51,9 @@ t1lib t1lib-devel
 
 ```bash
 cd ~
-wget https://www.php.net/distributions/php-7.2.28.tar.gz
-tar zxf php-7.2.28.tar.gz
-cd php-7.2.28
+wget https://www.php.net/distributions/php-7.4.3.tar.gz
+tar zxf php-7.4.3.tar.gz
+cd php-7.4.3
 
 ./configure --prefix=/usr/local  \
     --with-config-file-path=/etc  \
@@ -57,12 +67,8 @@ cd php-7.2.28
     --with-curl \
     --enable-exif \
     --enable-ftp  \
-    --with-gd \
     --with-iconv \
-    --with-jpeg-dir \
-    --with-png-dir \
     --with-zlib-dir  \
-    --with-freetype-dir \
     --with-gettext \
     --with-gmp  \
     --with-mhash  \
@@ -77,13 +83,10 @@ cd php-7.2.28
     --with-pdo-mysql   \
     --with-libedit \
     --with-readline \
-    --enable-wddx  \
     --with-xmlrpc \
     --with-xsl \
-    --enable-zip  \
     --with-pear \
-    --with-tidy \
-    --with-xpm-dir
+    --with-tidy
 make && make install
 
 # 等安装完成后
@@ -109,7 +112,7 @@ chown -R www:www /opt/www
 chown -R www:www /opt/files
 
 # 启动
-php-fpm
+/usr/local/sbin/php-fpm
 ```
 
 # 安装 image magick
@@ -119,7 +122,7 @@ php-fpm
 ```bash
 # install djvulibre
 cd ~
-wget http://downloads.sourceforge.net/djvu/djvulibre-3.5.27.tar.gz
+wget https://nchc.dl.sourceforge.net/project/djvu/DjVuLibre/3.5.27/djvulibre-3.5.27.tar.gz
 tar zxf djvulibre-3.5.27.tar.gz
 cd djvulibre-3.5.27
 ./configure
@@ -132,12 +135,12 @@ make install
 
 ```bash
 # imagemagick 依赖
-apk add bzip2-dev freetype-dev libjpeg-turbo-dev libpng-dev tiff-dev giflib-dev zlib-dev ghostscript-dev libwmf-dev jasper-dev libltdl libx11-dev libxext-dev libxt-dev lcms-dev libxml2-dev librsvg-dev openexr openexr-dev
+apk add bzip2-dev freetype-dev libjpeg-turbo-dev libpng-dev tiff-dev giflib-dev zlib-dev ghostscript-dev libwmf-dev libltdl libx11-dev libxext-dev libxt-dev lcms-dev libxml2-dev librsvg-dev openexr openexr-dev
 
 cd ~
-wget https://www.imagemagick.org/download/releases/ImageMagick-6.9.10-45.tar.gz
-tar zxf ImageMagick-6.9.10-45.tar.gz
-cd ImageMagick-6.9.10-45
+wget https://www.imagemagick.org/download/releases/ImageMagick-6.9.10-97.tar.gz
+tar zxf ImageMagick-6.9.10-97.tar.gz
+cd ImageMagick-6.9.10-97/
 ./configure
 make && make install
 
@@ -149,15 +152,27 @@ make && make install
 convert --version
 ```
 
+输出内容：
+
+```
+Version: ImageMagick 6.9.10-97 Q16 x86_64 2020-03-06 https://imagemagick.org
+Copyright: © 1999-2020 ImageMagick Studio LLC
+License: https://imagemagick.org/script/license.php
+Features: Cipher DPC OpenMP(4.5)
+Delegates (built-in): bzlib djvu fontconfig freetype jng jpeg lzma openexr png tiff wmf x xml zlib
+```
+
 # 安装 libmemcached
 
-```bash
+```
 apk add libmemcached libmemcached-dev
 ```
 
+> 目前的 pecl 有问题，还没升级好
+
 # pecl 安装
 
-```bash
+```
 pecl install igbinary
 pecl install msgpack
 pecl install memcached
@@ -169,7 +184,7 @@ pecl install mongodb
 
 ```bash
 cd ~
-git clone -b v3.4.3 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
+git clone -b v3.4.5 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
 cd cphalcon/build
 ./install
 ```
@@ -187,7 +202,7 @@ make && make install
 
 # 添加到 /etc/php.ini
 
-```bash
+```
 extension=igbinary.so
 extension=imagick.so
 extension=memcached.so
