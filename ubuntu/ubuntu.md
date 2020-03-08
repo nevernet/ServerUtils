@@ -1,12 +1,12 @@
--   基础
+# 基础
 
 ```
 apt-get update
 ```
 
--   配置 vim
+## 配置 vim
 
-```
+```bash
 apt-get install -y vim
 
 # vim ~/.vimrc
@@ -19,10 +19,10 @@ set encoding=utf-8
 set nu
 ```
 
--   修改 sshd 配置
+## 修改 sshd 配置
 
-```
-apt-get install -y openssh-server
+```bash
+apt-get install -y openssh-server openssh-client
 vim /etc/ssh/sshd_config
 
 # 修改如下：
@@ -33,16 +33,16 @@ UseDNS no
 service ssh restart
 ```
 
--   配置时区
+## 配置时区
 
-```
+```bash
 apt-get install -y tzdata
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
 
--   创建启动脚本
+## 创建启动脚本
 
-```
+```bash
 vim ~/init.sh
 
 # 输入
@@ -63,7 +63,10 @@ chmod +x init.sh
 
 # 安装 net tools
 
-`sudo apt-get install net-tools`
+```
+sudo apt-get install net-tools iputils-ping telnet
+```
+
 之后就可以使用 ifconfig -a
 
 # 升级和清理系统
@@ -89,3 +92,29 @@ sudo apt-get autoremove --purge
 默认情况下， /etc/resolv.conf 是链接到 `/run/systemd/resolve/stub-resolv.conf`,需要修改成： `/run/systemd/resolve/resolv.conf`
 
 `ln -sf /run/systemd/resolve/resolv.conf /etc/resolve.conf`
+
+## 添加辅助 ip:
+
+```bash
+# vim /etc/network/interfaces
+
+auto eth0:0
+iface eth0:0 inet static
+address 10.0.0.21
+netmask 255.255.255.0
+network 10.0.0.0
+broadcast 10.0.0.255
+```
+
+保存退出
+然后启用这个网卡：
+
+```bash
+ifdown eth0:0 && ifup eth0:0
+#如果不行，则用:
+ifconfig eth0:0 down && ifconfig eth0:0 up
+#如果还不行则 (ubuntu 下)
+service networking restart
+```
+
+可能需要安装：`apt install -y ifupdown ifupdown2 netscript-2.4`
