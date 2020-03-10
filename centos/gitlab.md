@@ -61,8 +61,8 @@ gitlab-ctl restart unicorn
 
 centos 下升级
 
--   1. Make a backup (Optional)
--   2. If you would like to make a backup before updating, the below command will backup data in `/var/opt/gitlab/backups` by default.
+- 1. Make a backup (Optional)
+- 2. If you would like to make a backup before updating, the below command will backup data in `/var/opt/gitlab/backups` by default.
 
 `gitlab-rake gitlab:backup:create STRATEGY=copy`
 
@@ -70,7 +70,7 @@ centos 下升级
 
 > Update to the latest version of GitLab.
 
-`yum install -y gitlab-ce`
+`yum upgrade -y gitlab-ce`
 
 > 升级过程需要根据大版本来。 不能跨越大版本
 > https://docs.gitlab.com/ee/policy/maintenance.html#upgrade-recommendations
@@ -119,4 +119,10 @@ gitlab-ctl stop
 # 删除原来的gitlab.socket文件
 # 重启：
 gitlab-ctl start
+```
+
+# 如果碰到提示 postgrsql 版本不一致，则重启一下：
+
+```
+gitlab-ctl restart postgresql
 ```
