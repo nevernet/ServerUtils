@@ -97,13 +97,21 @@ sudo apt-get autoremove --purge
 
 ```bash
 # vim /etc/network/interfaces
+# 添加固定入口的ip地址
+auto eth0
+iface eth0 inet static
+address 10.0.0.10
+netmask 255.255.255.0
+gateway 10.0.0.1
+
+
+# vim /etc/network/interfaces
+# 添加别名不要填gateway
 
 auto eth0:0
 iface eth0:0 inet static
 address 10.0.0.21
 netmask 255.255.255.0
-network 10.0.0.0
-broadcast 10.0.0.255
 ```
 
 保存退出
