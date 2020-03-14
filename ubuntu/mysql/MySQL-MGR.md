@@ -130,7 +130,7 @@ start group_replication;
 set sql_log_bin=1;
 ```
 
-## 新增节点，假定新增节点的 ip 是 10.0.20.102
+## 新增节点
 
 需要先从 MGR 集群里面获取一份完整的备份，然后导入到最新的机器
 
@@ -154,7 +154,7 @@ set sql_log_bin=0;
 # 重新设置复制起始节点
 start group_replication;
 
-# 原有集群修改group seeds，在原来集群的每台机器上面都执行
+# 原有集群修改group seeds，在原来集群的每台机器上面都执行，请修改ip地址为真实的ip地址端口
 set global group_replication_group_seeds='10.0.20.100:33406,10.0.20.101:33407,10.0.20.101:33408';
 set sql_log_bin=1;
 
