@@ -34,6 +34,7 @@ docker network create --subnet=10.0.10.1/24 br10
 # 允许容器上网
  sudo iptables -t nat -A POSTROUTING -s 10.0.5.0/24 -j SNAT --to 10.11.1.31
 
+# 请注意，目前这个方式的端口转发依然无法满足MGR同步的需求。
 # 把主机2过来的请求，转发到对应的容器上 确保主机2的数据走到主机1
 iptables -t nat -I PREROUTING -p tcp -s 10.11.1.10 -d 10.11.1.31 --dport 3360 -j DNAT --to 10.0.5.60:3360
 iptables -t nat -I PREROUTING -p tcp -s 10.11.1.10 -d 10.11.1.31 --dport 3361 -j DNAT --to 10.0.5.61:3361
