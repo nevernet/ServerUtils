@@ -1,3 +1,77 @@
+# MySQL 容器跨主机架构
+
+## 机器准备
+
+| 主机   | 容器    | 主机 ip    | 容器 ip    | 端口 | MGR 端口 |
+| ------ | ------- | ---------- | ---------- | ---- | -------- |
+| 主机 1 | 容器 s1 | 10.11.1.31 | 10.0.5.60  | 3360 | 63060    |
+| 主机 1 | 容器 s2 | 10.11.1.31 | 10.0.5.61  | 3361 | 63061    |
+| 主机 2 | 容器 s3 | 10.11.1.10 | 10.0.10.64 | 3364 | 63064    |
+
+## 网络配置
+
+### 创建网桥
+
+主机 1
+
+```
+docker network create --subnet=10.0.5.1/24 br5
+```
+
+主机 2
+
+```
+docker network create --subnet=10.0.10.1/24 br10
+```
+
+分别对应`br5`和`br10`两个网桥名字
+
+### 设置 iptables
+
+主机 1
+
+```bash
+# 允许容器上网
+ sudo iptables -t nat -A POSTROUTING -s 10.0.5.0/24 -j SNAT --to 10.11.1.31
+
+# 把主机2过来的请求，转发到对应的容器上 确保主机2的数据走到主机1
+iptables -t nat -I PREROUTING -p tcp -s 10.11.1.10 -d 10.11.1.31 --dport 3360 -j DNAT --to 10.0.5.60:3360
+iptables -t nat -I PREROUTING -p tcp -s 10.11.1.10 -d 10.11.1.31 --dport 3361 -j DNAT --to 10.0.5.61:3361
+iptables -t nat -I PREROUTING -p tcp -s 10.11.1.10 -d 10.11.1.31 --dport 63060 -j DNAT --to 10.0.5.60:63060 # mgr port
+iptables -t nat -I PREROUTING -p tcp -s 10.11.1.10 -d 10.11.1.31 --dport 63061 -j DNAT --to 10.0.5.61:63061 # mgr port
+
+# 把需要请求到10.0.10.0/24的网络，全部先转发到主机2的网卡上， 确保主机1的数据走到主机2
+ sudo iptables -t nat -I PREROUTING -d 10.0.10.0/24 -j DNAT --to 10.11.1.10
+
+```
+
+主机 2
+
+```bash
+# 允许容器上网
+sudo iptables -t nat -A POSTROUTING -s 10.0.10.0/24 -j SNAT --to 10.11.1.10
+
+# 把主机1过来的请求，转发到对应的容器上 确保主机1的数据走到主机2
+sudo iptables -t nat -I PREROUTING -p tcp -s 10.11.1.31 -d 10.11.1.10 --dport 3364 -j DNAT --to 10.0.10.64:3364
+sudo iptables -t nat -I PREROUTING -p tcp -s 10.11.1.31 -d 10.11.1.10 --dport 63064 -j DNAT --to 10.0.10.64:63064 # mgr port
+
+# 把需要请求到10.0.5.0/24的网络，全部先转发到主机1的网卡上 确保主机2的数据走到主机1
+sudo iptables -t nat -I PREROUTING -d 10.0.5.0/24 -j DNAT --to 10.11.1.31
+```
+
+## 容器启动
+
+```
+docker run --network br5 --ip 10.0.5.60 -d -v /opdata2/mysql/zl_prod_db10:/opt/mysql --privileged --restart always -h ZL_SH03_PROD_DB10 --name ZL_SH03_PROD_DB10 <your private docker repo>/ubuntu-mysql8:v3 /root/init.sh
+docker run --network br5 --ip 10.0.5.61 -d -v /opdata2/mysql/zl_prod_db11:/opt/mysql --privileged --restart always -h ZL_SH03_PROD_DB11 --name ZL_SH03_PROD_DB11 <your private docker repo>/ubuntu-mysql8:v3 /root/init.sh
+docker run --network br10 --ip 10.0.10.64 -d -v /opdata/mysql/zl_sh01_prod_db13:/opt/mysql --privileged --restart always -h ZL_SH01_PROD_DB13 --name ZL_SH01_PROD_DB13 <your private docker repo>/ubuntu-mysql8:v3 /root/init.sh
+```
+
+这里主要是要指定`--netwrok`，根据前面创建的网桥来。
+`ubuntu-mysql8:v3`是我自己私有的 MySQL 镜像
+
+## 配置文件
+
 MGR 的配置在文件[my.cnf](my.cnf)都有了
 
 # 日常操作：
@@ -57,13 +131,29 @@ set sql_log_bin=1;
 
 ## 新增节点，假定新增节点的 ip 是 10.0.20.102
 
-```bash
-# 需要先从MGR集群里面获取一份完整的备份，然后到最新的机器
+需要先从 MGR 集群里面获取一份完整的备份，然后导入到最新的机器
 
+```
+mysqldump -u root -p -h 10.0.5.60 -P 3360 --opt --all-databases --triggers --routines --events > all.sql
+mysql -u root -p -P 3364 < all.sql
+```
+
+为了保证上面的操作成功，我们需要先停止本机的`stop group_replication`和并且`reset master`;
+可能会碰到类似下面的问题：
+
+```bash
+# 因为之前启动过同步集群，且失败了，所以mysql被自动修改成只读模式，这个时候需要重启一下就好
+ERROR 1290 (HY000) at line 33: The MySQL server is running with the --super-read-only option so it cannot execute this statement
+# 因为之前启动过同步集群，导致同步的数据节点不一致，重置一下master即可
+ERROR 3546 (HY000) at line 26: @@GLOBAL.GTID_PURGED cannot be changed: the added gtid set must not overlap with @@GLOBAL.GTID_EXECUTED
+```
+
+```bash
+set sql_log_bin=0;
 # 重新设置复制起始节点
+start group_replication;
 
 # 原有集群修改group seeds，在原来集群的每台机器上面都执行
-set sql_log_bin=0;
 set global group_replication_group_seeds='10.0.20.100:33406,10.0.20.101:33407,10.0.20.101:33408';
 set sql_log_bin=1;
 
