@@ -132,11 +132,28 @@ set sql_log_bin=1;
 
 ## 新增节点
 
-需要先从 MGR 集群里面获取一份完整的备份，然后导入到最新的机器
+一般情况下，我们的 binlog 日志并不会保存太久，比如我只保存一天， 所以超过一天后，无法直接从 binlog 里面恢复所有的数据，这个时候需要先从 MGR 集群里面获取一份完整的备份，然后导入到最新的机器。这里的导出关闭了`gtid_purged`的导出，在后面单独设置
 
-```
-mysqldump -u root -p -h 10.0.5.60 -P 3360 --opt --all-databases --triggers --routines --events > all.sql
+```sql
+mysqldump -u root -p -h 10.0.5.60 -P 3360 --opt --all-databases --single-transaction --triggers --routines --events --set-gtid-purged=OFF > all.sql
 mysql -u root -p -P 3364 < all.sql
+```
+
+在主服务器上面，查看`show global variables like 'gtid%';`
+
+| Variable_name                    | Value                                                                              |
+| -------------------------------- | ---------------------------------------------------------------------------------- |
+| gtid_executed                    | 7f5100de-26a4-11e8-b467-0ed5f89f718b:1-47,8f88c596-6137-11ea-88e3-02420a00053c:1-3 |
+| gtid_executed_compression_period | 1000                                                                               |
+| gtid_mode                        | ON                                                                                 |
+| gtid_owned                       |                                                                                    |
+| gtid_purged                      | 7f5100de-26a4-11e8-b467-0ed5f89f718b:1-26,8f88c596-6137-11ea-88e3-02420a00053c:1-3 |
+
+找到`gtid_executed`的数值，然后在新的`slave`服务器上面:
+
+```sql
+reset master;
+set @@GLOBAL.GTID_PURGED = '7f5100de-26a4-11e8-b467-0ed5f89f718b:1-47,8f88c596-6137-11ea-88e3-02420a00053c:1-3';
 ```
 
 为了保证上面的操作成功，我们需要先停止本机的`stop group_replication`和并且`reset master`;
@@ -149,19 +166,21 @@ ERROR 1290 (HY000) at line 33: The MySQL server is running with the --super-read
 ERROR 3546 (HY000) at line 26: @@GLOBAL.GTID_PURGED cannot be changed: the added gtid set must not overlap with @@GLOBAL.GTID_EXECUTED
 ```
 
-```bash
+```sql
 set sql_log_bin=0;
-# 重新设置复制起始节点
+-- 确定是否已经创建了同步的用户，如果没有创建则根据上面的创建用于复制的用户
+
+-- 重新设置复制起始节点
 start group_replication;
 
-# 原有集群修改group seeds，在原来集群的每台机器上面都执行，请修改ip地址为真实的ip地址端口
+-- 原有集群修改group seeds，在原来集群的每台机器上面都执行，请修改ip地址为真实的ip地址端口
 set global group_replication_group_seeds='10.0.20.100:33406,10.0.20.101:33407,10.0.20.101:33408';
 set sql_log_bin=1;
 
-# 原有集群的每台机器的/etc/my.cnf的配置里面都修改group_replication_group_seeds，这样重启的时候才有新的集群节点数据
+-- 原有集群的每台机器的/etc/my.cnf的配置里面都修改group_replication_group_seeds，这样重启的时候才有新的集群节点数据
 loose-group_replication_group_seeds = '10.0.20.100:33406,10.0.20.101:33407,10.0.20.101:33408' # 真实机器修改这里配置
 
-# 新节点的/etc/my.cnf默认配置好上面的group seeds，然后开启同步
+-- 新节点的/etc/my.cnf默认配置好上面的group seeds，然后开启同步
 set sql_log_bin=0;
 start group_replication;
 set sql_log_bin=1;
