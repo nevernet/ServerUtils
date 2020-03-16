@@ -126,3 +126,18 @@ gitlab-ctl start
 ```
 gitlab-ctl restart postgresql
 ```
+
+# gitlab 默认需要 4 核 8G 以上的配置，如果是共享的机器，则需要调整配置，以避免 gitlab 占用过多的内存和 cpu 资源
+
+```bash
+sidekiq['concurrency'] = 16 # 默认25， 改成16并发
+
+unicorn['worker_processes'] = 5 # 内核数+1。按照我这个配置，默认耗费内存最小 5*50M = 250M, 最大5*300M=1500M(1.5G)
+# 单个进程从最小的50M，到最大300M。 默认是200M到600M
+unicorn['worker_memory_limit_min'] = "50 * 1 << 20"
+unicorn['worker_memory_limit_max'] = "300 * 1 << 20"
+
+# pg
+postgresql['shared_buffers'] = "256MB"
+
+```
