@@ -53,6 +53,7 @@ https://mirrors.ustc.edu.cn/alpine/v3.11/community
 ```
 
 执行: `apk update`
+升级： `apk upgrade`
 
 ### 安装 openrc, 提供命令：rc-service, rc-update, rc-status 等
 

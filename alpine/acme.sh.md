@@ -2,9 +2,15 @@
 
 ```
 python -V
-# 如果版本号不是2.7以上，则直接
-pyenv global 2.7.13 # 必须先安装pyenv， 请参考 python/pyenv.sh
 ```
+
+# 如果版本号不是 2.7 以上，则直接
+
+```
+pyenv global 2.7.13
+```
+
+必须先安装 pyenv， 请参考 [python/pyenv.sh](python/pyenv.sh)
 
 # 第一步： 创建 ssl 目录:
 
@@ -24,12 +30,14 @@ acme.sh 支持单域名和 wildcard（非常爽），并且支持很多 dns api�
 安装
 
 ```
+apk add openssl
 cd ~
-git clone https://github.com/Neilpang/acme.sh.git
+git clone --depth=1 https://github.com/acmesh-official/acme.sh.git
 cd ./acme.sh
 ./acme.sh --install
 echo 'alias acme.sh="~/.acme.sh/acme.sh"' >> ~/.bashrc
-source .bashrc
+source ~/.bashrc
+
 ```
 
 测试: `acme.sh -h`
@@ -55,6 +63,13 @@ dns 方式：
 ```
 DP_Id=123456
 DP_Key=abcdefghijklmn
+```
+
+最新版本需要导出全局变量: `vim ~/.bashrc`
+
+```
+export DP_Id="123456"
+export DP_Key="abcdefghijklmn"
 ```
 
 生成 ca:
