@@ -13,7 +13,7 @@ mkdir -p /opdata2/zl_registry_web
 
 ## 创建容器
 
-docker run --network br5 --ip 10.0.5.200 -d -e SETTINGS_FLAVOR=dev -e STORAGE_PATH=/tmp/registry -v /opdata2/zl_registry:/tmp/registry --restart=always -h ZL_REGISTRY --name ZL_REGISTRY registry:2
+docker run --network br5 --ip 10.0.5.200 -d -v /opdata2/zl_registry:/var/lib/registry --restart=always -h ZL_REGISTRY --name ZL_REGISTRY registry:2
 
 ## 创建 docker registry 前端 nginx
 
