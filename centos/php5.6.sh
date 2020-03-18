@@ -23,13 +23,13 @@ make
 make install
 
 # install dependecy
-yum install -y curl curl-devel openssl openssl-devel gd gd-devel gettext gettext-devel gettext gettext-devel mhash mhash-devel libxslt libxslt-devel icu libicu libicu-devel libmcrypt libmcrypt-devel readline readline-devel libedit libedit-devel libtidy libtidy-devel libvpx libvpx-devel libjpeg-turbo libjpeg-turbo-devel libzip libzip-devel libXpm libXpm-devel freetype freetype-devel t1lib t1lib-devel gmp gmp-devel
+yum install -y curl curl-devel openssl openssl-devel gd gd-devel gettext gettext-devel gettext gettext-devel mhash mhash-devel libxslt libxslt-devel icu libicu libicu-devel libmcrypt libmcrypt-devel readline readline-devel libedit libedit-devel libtidy libtidy-devel libvpx libvpx-devel libjpeg-turbo libjpeg-turbo-devel libzip libzip-devel libXpm libXpm-devel freetype freetype-devel t1lib t1lib-devel gmp gmp-devel libcurl libcurl-devel
 
 cd ~
 # wget http://sg2.php.net/get/php-5.6.15.tar.gz/from/this/mirror -O php-source.tar.gz
-wget http://cn.php.net/distributions/php-5.6.30.tar.gz -O php-source.tar.gz
+wget https://www.php.net/distributions/php-5.6.40.tar.gz -O php-source.tar.gz
 tar zxf php-source.tar.gz
-cd php-5.6.30
+cd php-5.6.40
 ./configure --prefix=/usr/local  --with-config-file-path=/etc  --enable-fpm --with-openssl  --with-zlib  --enable-bcmath --enable-calendar --with-curl --enable-exif --enable-ftp  --with-gd --with-vpx-dir --with-jpeg-dir --with-png-dir --with-zlib-dir  --with-xpm-dir  --with-freetype-dir --with-t1lib --enable-gd-native-ttf --with-gettext --with-gmp  --with-mhash  --enable-intl  --enable-mbstring --with-mcrypt  --with-mysql --with-mysql-sock --with-mysqli --with-zlib-dir  --enable-opcache --enable-pcntl  --with-pdo-mysql   --with-libedit --with-readline --enable-sockets  --with-tidy --enable-wddx  --with-xmlrpc --with-xsl --enable-zip  --with-pear
 make && make install
 
