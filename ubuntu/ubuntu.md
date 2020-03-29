@@ -28,6 +28,7 @@ vim /etc/ssh/sshd_config
 # 修改如下：
 ClientAliveInterval 60
 ClientAliveCountMax 3
+PermitRootLogin yes # 根据实际情况开启是否允许密码登录
 UseDNS no
 
 service ssh restart
