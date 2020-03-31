@@ -165,4 +165,5 @@ ip rule add from 10.11.2.2 table 20
 vim /etc/rc.local
 ip route add default dev eth1 via 10.11.2.1 table 20
 ip rule add from 10.11.2.0/24 table 20
+ip rule add from 10.0.22.0/24 table 20
 ```
