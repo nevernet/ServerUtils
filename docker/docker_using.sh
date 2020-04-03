@@ -4,7 +4,7 @@
 https://docs.docker.com/engine/installation/linux/ubuntu/
 
 #创建一个网络 ，自定义一个网路叫br0, 网段10.0.2.x
-docker network create --subnet=10.0.2.1/24 br0
+docker network create --subnet=10.0.2.1/24 --opt "com.docker.network.bridge.name"="br2" br2
 
 #镜像：使用centos 6镜像，目前最新的是centos 6.8
 docker pull centos:6

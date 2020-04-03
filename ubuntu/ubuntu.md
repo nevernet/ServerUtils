@@ -41,6 +41,12 @@ apt-get install -y tzdata
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
 
+## 修改 hostname
+
+```
+vim /etc/hostname
+```
+
 ## 创建启动脚本
 
 ```bash
