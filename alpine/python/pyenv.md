@@ -71,7 +71,9 @@ pip install torndb tornado  requests supervisor pymongo redis thrift pynsq arrow
 > 注意，需要先安装 MySQL Client，请参考 [mysql_5.7.21.sh](../mysql_5.7.21.sh) 里面的安装方式 1
 
 ```
-pip install MySQL-python
+apk del openssl-dev
+apk add libressl-dev mariadb-dev gcc musl-dev
+pip install mysql-python
 ```
 
 # 升级 pyenv
