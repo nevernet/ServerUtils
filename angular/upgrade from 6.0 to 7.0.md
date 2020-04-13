@@ -1,4 +1,6 @@
-# https://update.angular.io/
+# 官方升级指南
+
+[https://update.angular.io/](https://update.angular.io/)
 
 ```
 rm -rf node_modules dist
@@ -92,7 +94,7 @@ ng build --prod --aot
 
 # issue
 
--   如果碰到 globa.InitPolyfill ... no global , see https://github.com/angular/angular-cli/issues/9920
-    解决办法就是吧 polyfill 里面的 import intl 删除
+- 如果碰到 globa.InitPolyfill ... no global , see https://github.com/angular/angular-cli/issues/9920
+  解决办法就是吧 polyfill 里面的 import intl 删除
 
--   Unexpected end of JSON input while parsing near '..."npm":">= 5.5.1"},"\_h', see https://github.com/angular/angular-cli/issues/8572，考虑更换源，或者当前网络不太好。
+- Unexpected end of JSON input while parsing near '..."npm":">= 5.5.1"},"\_h', see https://github.com/angular/angular-cli/issues/8572，考虑更换源，或者当前网络不太好。
