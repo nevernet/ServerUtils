@@ -109,6 +109,8 @@ ssl_certificate_key /root/.acme.sh/*.example.com/*.example.com.key;
 ```
 acme.sh --renew -d example.com  --force
 acme.sh --renew --dns dns_dp -d '*.example.com' --force
+/root/.acme.sh/acme.sh --renew-all --renew-hook "/etc/init.d/nginx restart"
+/root/.acme.sh/acme.sh --renew-all --force --renew-hook "/etc/init.d/nginx restart"
 ```
 
 去除某个域名的更新：
