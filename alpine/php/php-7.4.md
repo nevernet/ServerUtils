@@ -178,6 +178,8 @@ pecl install msgpack
 pecl install memcached
 pecl install imagick
 pecl install mongodb
+pecl install grpc
+pecl install protobuf
 ```
 
 # 安装 phalconPHP
@@ -209,4 +211,6 @@ extension=memcached.so
 extension=mongodb.so
 extension=phalcon.so
 extension=redis.so
+extension=grpc.so
+extension=protobuf.so
 ```
