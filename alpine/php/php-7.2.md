@@ -1,7 +1,7 @@
 # 安装工具
 
 ```bash
-apk add gcc g++ make cmake autoconf git wget rsync libc-dev pkgconf re2c zlib-dev libmemcached-dev
+apk add linux-headers gcc g++ make cmake autoconf git wget rsync libc-dev pkgconf re2c zlib-dev libmemcached-dev
 ```
 
 # 安装 mhash
@@ -207,3 +207,8 @@ grpc 和 protobuf 也可以使用 composer 版本
 ```
 composer requier grpc/grpc google/protobuf
 ```
+
+# issues
+
+`fatal error: linux/futex.h: No such file or directory`
+修复： `apk add linux-headers`

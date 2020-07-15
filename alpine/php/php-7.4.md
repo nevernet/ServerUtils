@@ -11,7 +11,7 @@ docker exec -it 4720d3018066 /bin/bash
 # 安装工具
 
 ```bash
-apk add gcc g++ make cmake autoconf git wget rsync libc-dev pkgconf re2c zlib-dev libmemcached-dev
+apk add linux-headers gcc g++ make cmake autoconf git wget rsync libc-dev pkgconf re2c zlib-dev libmemcached-dev
 ```
 
 # 安装 mhash
