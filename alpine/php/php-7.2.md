@@ -41,9 +41,9 @@ t1lib t1lib-devel
 
 ```bash
 cd ~
-wget https://www.php.net/distributions/php-7.2.28.tar.gz
-tar zxf php-7.2.28.tar.gz
-cd php-7.2.28
+wget https://www.php.net/distributions/php-7.2.34.tar.gz
+tar zxf php-7.2.34.tar.gz
+cd php-7.2.34
 
 ./configure --prefix=/usr/local  \
     --with-config-file-path=/etc  \
