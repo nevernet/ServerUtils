@@ -27,24 +27,29 @@ apt-get install -y mysql-server mysql-client
 
 # 方法 2：
 
-wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-server_8.0.19-1ubuntu18.04_amd64.deb-bundle.tar
+wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-server_8.0.22-1ubuntu20.04_amd64.deb-bundle.tar
 
-tar -xvf mysql-server_8.0.19-1ubuntu18.04_amd64.deb-bundle.tar
+tar -xvf mysql-server_8.0.22-1ubuntu20.04_amd64.deb-bundle.tar
 
 apt --fix-broken install -y
-apt-get install python libaio1 libmecab2 libnuma1 libsasl2-2 perl psmisc libjson-perl mecab-ipadic-utf8
+apt-get install -y python libaio1 libmecab2 libnuma1 libsasl2-2 perl psmisc libjson-perl mecab-ipadic-utf8
 
-dpkg -i mysql-common_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i libmysqlclient21_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i libmysqlclient-dev_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-community-client-core_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-community-client_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-client_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-community-server-core_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-community-server_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-server_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-community-test_8.0.19-1ubuntu18.04_amd64.deb
-dpkg -i mysql-testsuite_8.0.19-1ubuntu18.04_amd64.deb
+dpkg -i mysql-common_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-community-client-plugins_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i libmysqlclient21_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i libmysqlclient-dev_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-community-client-core_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-community-client_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-client_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-community-server-core_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-community-server_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-server_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-community-test_8.0.22-1ubuntu20.04_amd64.deb
+dpkg -i mysql-testsuite_8.0.22-1ubuntu20.04_amd64.deb
+
+#
+# dpkg -i mysql-community-server-debug_8.0.22-1ubuntu20.04_amd64.deb
+# dpkg -i mysql-community-test-debug_8.0.22-1ubuntu20.04_amd64.deb
 
 ```
 
