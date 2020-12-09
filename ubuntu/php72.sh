@@ -1,6 +1,7 @@
 # install dependecy
 apt-get install -y build-essential
 apt-get install -y \
+autoconf \
 curl libcurl4-openssl-dev \
 libssl-dev openssl libcurl4-openssl-dev \
 gd libgd-dev \
@@ -16,6 +17,7 @@ libvpx libvpx-dev \
 libzip libzip-dev \
 libxpm libxpm-dev \
 gmp libgmp-dev \
+libmemcached-dev \
 libxml2 libxml2-dev
 
 # install freetype
@@ -88,6 +90,7 @@ pecl install memcached
 
 pecl uninstall imagick
 pecl install imagick
+pecl install protobuf
 
 # phalconphp
 # 参见./php/phalconphp.sh

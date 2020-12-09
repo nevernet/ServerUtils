@@ -205,7 +205,7 @@ extension=protobuf.so
 grpc 和 protobuf 也可以使用 composer 版本
 
 ```
-composer requier grpc/grpc google/protobuf
+composer require grpc/grpc google/protobuf
 ```
 
 # issues
