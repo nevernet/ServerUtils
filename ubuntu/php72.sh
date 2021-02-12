@@ -5,21 +5,22 @@ apt-get install -y \
 autoconf \
 curl libcurl4-openssl-dev \
 libssl-dev openssl libcurl4-openssl-dev \
-gd libgd-dev \
+libgd-dev \
 gettext libgettext-ocaml-dev \
-mhash libmhash-dev \
-libxslt libxslt1-dev \
-icu libicu libicu-dev \
-libmcrypt libmcrypt-dev \
-readline libreadline-dev \
-libedit libedit-dev \
-libtidy libtidy-dev \
-libvpx libvpx-dev \
-libzip libzip-dev \
-libxpm libxpm-dev \
-gmp libgmp-dev \
+libmhash-dev \
+libxslt1-dev \
+libicu-dev \
+libmcrypt-dev \
+libreadline-dev \
+libedit-dev \
+libtidy-dev \
+libvpx-dev \
+libzip-dev \
+libxpm-dev \
+libgmp-dev \
 libmemcached-dev \
-libxml2 libxml2-dev
+libxml2-dev \
+libfreetype-dev
 
 # install freetype
 cd ~
