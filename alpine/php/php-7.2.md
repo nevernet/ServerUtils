@@ -171,7 +171,7 @@ pecl install protobuf
 
 ```bash
 cd ~
-git clone -b v3.4.3 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
+git clone  --branch v3.4.5 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
 cd cphalcon/build
 ./install
 ```

@@ -44,20 +44,21 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 可以通过 `pyenv install --list` 来查看有哪些提供的版本
 
 ```
-pyenv install 2.7.16
+pyenv install 2.7.18
+pyenv install 3.9.1
 ```
 
 设置全局的版本:
 
 ```
-pyenv global 2.7.16
+pyenv global 3.9.1
 python -V
 ```
 
 临时设置本次 shell 环境
 
 ```
-pyenv shell 2.7.13
+pyenv shell 3.9.1
 ```
 
 # 安装 python 常用的库， install library
