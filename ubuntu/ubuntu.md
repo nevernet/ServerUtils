@@ -1,5 +1,10 @@
 # 基础
 
+启用清华的镜像
+```
+https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+```
+
 ```
 apt-get update
 ```

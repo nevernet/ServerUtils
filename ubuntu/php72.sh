@@ -1,5 +1,6 @@
 # install dependecy
 apt-get install -y build-essential
+apt-get install -y apt-transport-https
 apt-get install -y \
 autoconf \
 curl libcurl4-openssl-dev \
