@@ -107,7 +107,7 @@ ssl_certificate_key /root/.acme.sh/*.example.com/*.example.com.key;
 手动更新 ca
 
 ```
-acme.sh --renew -d example.com  --force
+acme.sh --renew -d example.com  --force --debug
 acme.sh --renew --dns dns_dp -d '*.example.com' --force
 /root/.acme.sh/acme.sh --renew-all --renew-hook "/etc/init.d/nginx restart"
 /root/.acme.sh/acme.sh --renew-all --force --renew-hook "/etc/init.d/nginx restart"
