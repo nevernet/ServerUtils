@@ -1,6 +1,7 @@
 # 基础
 
 启用清华的镜像
+
 ```
 https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
 ```
@@ -44,6 +45,13 @@ service ssh restart
 ```bash
 apt-get install -y tzdata
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
+## 同步时间
+
+```
+sudo apt-get install ntpdate
+sudo ntpdate ntp.sjtu.edu.cn # 交大时间服务器
 ```
 
 ## 修改 hostname

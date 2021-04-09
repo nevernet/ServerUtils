@@ -1,20 +1,29 @@
 # Protobuf 和 GRPC
 
-安装之前先更新本机的 brew 和 brew 安装的包：
-
-```
-brew update
-brew upgrade
-```
+在 Ubuntu 或者 WSL2 上安装
 
 ## 安装 protobuf
 
 ```
-brew install protobuf
+cd ~
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protobuf-all-3.15.8.tar.gz
+tar zxf protobuf-all-3.15.8.tar.gz
+cd protobuf-all-3.15.8
+./confirgure
+make
+sudo make install
+
+# 在.bashrc或者.zshrc里面添加，取决于你的shell环境
+export LD_LIBRARY_PATH='/usr/local/lib'
+# 重新加载
+source ~/.bashrc
+# 或者
+source ~/.zshrc
+
 # 查看版本
 protoc --version
 
-# 目前应该是3.14版本，当你看到这个时候，请确认自己的版本，主要是保证protobuf的版本和grpc的版本要对应
+# 目前应该是3.15版本，当你看到这个时候，请确认自己的版本，主要是保证protobuf的版本和grpc的版本要对应
 
 ```
 
@@ -40,11 +49,23 @@ protoc --go_out=. --go-grpc_out=. protos/lux.proto
 
 ### 安装 php grpc 插件
 
-```
-brew upgrade protobuf
-# 或者
-brew install protobuf
+> 具体说明在这里： https://github.com/grpc/grpc/tree/master/src/php
 
+想要使用 php grpc 插件，需要满足如下 3 个条件
+
+- protoc: the protobuf compiler binary to generate PHP classes for your messages and service definition.
+- protobuf.so: the protobuf extension runtime library.
+- grpc_php_plugin: a plugin for protoc to generate the service stub classes.
+
+`protoc`和`protobuf.so`前面已经安装了，这里安装 `grpc_php_plugin` 插件
+
+先安装 `cmake`
+
+```
+sudo apt-get install cmake
+```
+
+```
 git clone -b v1.37.0 https://github.com/grpc/grpc
 cd grpc
 git submodule update --init  # 这一步有时候需要代理，才能保证下载成功
@@ -54,7 +75,7 @@ cmake ../..
 make grpc_php_plugin
 ```
 
-`grpc_php_plugin` 会生成在当前的`cmake/build`目录下。 迁移到 /usr/local/bin 里面
+`grpc_php_plugin`会生成在当前的`cmake/build`目录下。 迁移到 /usr/local/bin 里面
 
 ```
 sudo cp grpc_php_plugin /usr/local/bin
