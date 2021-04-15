@@ -75,6 +75,15 @@ rc-status
 vi /etc/ssh/sshd_config
 ```
 
+### 安装系统启动脚本
+
+```
+apk add busybox-initscripts
+
+# 添加crond的启动
+rc-update add crond && rc-service crond start
+```
+
 ### 安装软件
 
 ```bash
