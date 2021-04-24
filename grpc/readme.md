@@ -79,7 +79,12 @@ pecl install grpc
 
 注意需要提前安装 linux-headers: `apk add linux-headers`
 
-然后在 php.ini 里面启用 `extension=protobuf.so`
+然后在 php.ini 里面启用
+
+```
+extension=protobuf.so
+extension=grpc.so
+```
 
 老版本的情况，可以使用 composer 方式，在项目的根目录（也就是 composer.json)存在的目录
 
