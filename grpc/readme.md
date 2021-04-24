@@ -74,7 +74,10 @@ protoc --proto_path=examples/protos \
 
 ```
 pecl install protobuf
+pecl install grpc
 ```
+
+注意需要提前安装 linux-headers: `apk add linux-headers`
 
 然后在 php.ini 里面启用 `extension=protobuf.so`
 
