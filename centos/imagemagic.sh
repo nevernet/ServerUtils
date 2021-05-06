@@ -21,3 +21,42 @@ make install
 
 # 检查：
 convert --version
+
+
+# 源码 7.x版本安装 ubuntu
+# 依赖安装
+sudo apt-get update
+sudo apt-get install -y libbz2-dev
+sudo apt-get install -y libfreetype-dev
+sudo apt-get install -y libjpeg-dev
+sudo apt-get install -y libpng-dev
+sudo apt-get install -y libtiff-dev
+sudo apt-get install -y libgif-dev
+sudo apt-get install -y zlib1g-dev
+sudo apt-get install -y libdjvulibre-dev
+sudo apt-get install -y libwmf-dev
+# sudo apt-get install -y libjasper-dev # 暂时没有这个包
+sudo apt-get install -y libltdl-dev
+sudo apt-get install -y liblcms2-dev
+sudo apt-get install -y libxml2-dev
+sudo apt-get install -y librsvg2-dev
+sudo apt-get install -y libopenexr-dev
+
+git clone https://github.com/ImageMagick/ImageMagick.git ImageMagick-7.0.11
+cd ImageMagick-7.0.11
+./configure --with-modules
+make
+sudo make install
+
+# 可选
+sudo ldconfig /usr/local/lib
+
+# 测试
+convert --version
+
+# 输出
+Version: ImageMagick 7.0.11-12 Q16 x86_64 2021-05-04 https://imagemagick.org
+Copyright: (C) 1999-2021 ImageMagick Studio LLC
+License: https://imagemagick.org/script/license.php
+Features: Cipher DPC HDRI Modules OpenMP(4.5)
+Delegates (built-in): bzlib djvu fontconfig freetype jbig jng jpeg lcms ltdl lzma openexr png tiff wmf x xml zip zlib
