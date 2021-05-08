@@ -1,0 +1,1 @@
+- wsl 代理设置: https://zinglix.xyz/2020/04/18/wsl2-proxy/
