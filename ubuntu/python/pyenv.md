@@ -3,11 +3,6 @@
 ## 依赖
 
 ```
-# for centos
-yum install -y gcc make sqlite3 sqlite-devel mysql-devel bzip2 bzip2-devel openssl openssl-devel readline readline-devel zlib zlib-devel
-```
-
-```
 # for ubuntu
 sudo apt-get install -y libffi-dev python3-dev default-libmysqlclient-dev build-essential libsqlite3-dev sqlite3
 ```
@@ -43,7 +38,6 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 ```
 pyenv install 2.7.16
-pyenv install 3.7.4
 pyenv install 3.9.5
 ```
 
@@ -66,23 +60,13 @@ python2 -V
 临时设置本次 shell 环境
 
 ```
-pyenv shell 2.7.13
+pyenv shell 2.9.5
 ```
 
 # 安装 python 常用的库， install library
 
 ```
 pip install tornado requests supervisor pymongo redis arrow python-memcached mysqlclient pynsq pysqlite3 django SQLAlchemy
-```
-
-# 安装 MySQL
-
-> 注意，需要先安装 MySQL Client，请参考 [mysql_5.7.21.sh](../mysql_5.7.21.sh) 里面的安装方式 1
-
-注意：此包太老了， 只支持MySQL 5.x和Python 2
-
-```
-pip install MySQL-python
 ```
 
 # 升级 pyenv
