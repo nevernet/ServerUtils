@@ -5,7 +5,7 @@
 1. 先确保本地是最新的 10.0，然后执行
 
 ```bash
-ng update @angular/core @angular/cli
+ng update @angular/core@11 @angular/cli@11
 ```
 
 2. 确保本地没有任何错误

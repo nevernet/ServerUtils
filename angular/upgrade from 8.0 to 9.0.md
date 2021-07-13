@@ -6,7 +6,12 @@
 
 ```bash
 ng update @angular/cli@8 @angular/core@8
-npm install @angular/cli@8 --save-dev
+```
+
+升级：
+
+```
+ng update @angular/cli@9 @angular/core@9
 npm update # 升级其他第三方包
 ```
 

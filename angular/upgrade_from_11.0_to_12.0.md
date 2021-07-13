@@ -2,15 +2,16 @@
 
 [https://update.angular.io/](https://update.angular.io/)
 
-1. 先确保本地是最新的 9.0，然后执行
+1. 先确保本地是最新的 11.0，然后执行
 
 ```bash
-ng update @angular/core@10 @angular/cli@10
+ng update @angular/core@12 @angular/cli@12
 ```
 
 2. 确保本地没有任何错误
 
 ```bash
+ng update
 ng build --prod --aot
 ```
 
