@@ -7,8 +7,8 @@
 #http://dl-cdn.alpinelinux.org/alpine/v3.11/main
 #http://dl-cdn.alpinelinux.org/alpine/v3.11/community
 
-https://mirrors.ustc.edu.cn/alpine/v3.11/main
-https://mirrors.ustc.edu.cn/alpine/v3.11/communit
+https://mirrors.ustc.edu.cn/alpine/v3.14/main
+https://mirrors.ustc.edu.cn/alpine/v3.14/communit
 
 ```
 
@@ -17,6 +17,7 @@ https://mirrors.ustc.edu.cn/alpine/v3.11/communit
 执行升级： `apk upgrade --available`
 
 如果有错误可以尝试： `apk fix` 或者 `apk -sv fix`
+如果 有 php，需要重新安装 `curl` 具体编译参见：[../curl/curl.md](../curl/curl.md)，否则导致 libcurl 不正确
 
 执行重启：
 

@@ -48,8 +48,8 @@ vi /etc/apk/repositories
 #http://dl-cdn.alpinelinux.org/alpine/v3.7/community
 
 # 添加新的国内源
-https://mirrors.ustc.edu.cn/alpine/v3.11/main
-https://mirrors.ustc.edu.cn/alpine/v3.11/community
+https://mirrors.ustc.edu.cn/alpine/v3.14/main
+https://mirrors.ustc.edu.cn/alpine/v3.14/community
 ```
 
 执行: `apk update`
