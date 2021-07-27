@@ -4,7 +4,7 @@
 
 ```
 # for centos
-yum install -y gcc make sqlite3 sqlite-devel mysql-devel bzip2 bzip2-devel openssl openssl-devel readline readline-devel zlib zlib-devel
+yum install -y gcc make sqlite3 sqlite-devel mysql-devel bzip2 bzip2-devel openssl openssl-devel readline readline-devel zlib zlib-devel libffi-devel python-devel python3-devel
 ```
 
 ```
@@ -79,7 +79,7 @@ pip install tornado requests supervisor pymongo redis arrow python-memcached mys
 
 > 注意，需要先安装 MySQL Client，请参考 [mysql_5.7.21.sh](../mysql_5.7.21.sh) 里面的安装方式 1
 
-注意：此包太老了， 只支持MySQL 5.x和Python 2
+注意：此包太老了， 只支持 MySQL 5.x 和 Python 2
 
 ```
 pip install MySQL-python
