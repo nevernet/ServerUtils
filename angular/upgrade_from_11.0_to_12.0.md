@@ -12,7 +12,7 @@ ng update @angular/core@12 @angular/cli@12
 
 ```bash
 ng update
-ng build --prod --aot
+ng build --configuration production --aot
 ```
 
 如果编译没有错误，升级完成。 如果有错误，根据实际情况修改即可。
