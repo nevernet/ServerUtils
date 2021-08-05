@@ -87,7 +87,7 @@ rc-update add crond && rc-service crond start
 ### 安装软件
 
 ```bash
-apk add git wget bash bash-completion netcat-openbsd
+apk add git wget netcat-openbsd
 ```
 
 ### 网络设置
@@ -125,6 +125,12 @@ vi .profile
 source .bashrc
 ```
 
+### 添加 bash
+
+```
+apk add bash bash-completion bash-doc
+```
+
 ### 修改 `vi ~/.bashrc`
 
 ```bash
@@ -133,9 +139,16 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 export PS1='\u@\h:\W \$ '
 alias l='ls -CF'
 alias la='ls -A'
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias ls='ls --color=auto'
 source /etc/profile.d/bash_completion.sh
+```
+
+cd ~
+vim .profile
+
+```bash
+source .bashrc
 ```
 
 ### vi ~/.vimrc
