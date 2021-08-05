@@ -87,7 +87,7 @@ rc-update add crond && rc-service crond start
 ### 安装软件
 
 ```bash
-apk add git wget netcat-openbsd
+apk add git wget netcat-openbsd ca-certificates
 ```
 
 ### 网络设置
