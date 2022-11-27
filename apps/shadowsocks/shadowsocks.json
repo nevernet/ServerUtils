@@ -1,0 +1,11 @@
+{
+    "server": "server ip address",
+    "server_port": 12050,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "password": "yourpassword",
+    "timeout": 300,
+    "method": "aes-256-cfb",
+    "fast_open": false,
+    "manager-address": "127.0.0.1:6000"
+}

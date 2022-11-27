@@ -1,0 +1,46 @@
+{
+  "name": "serverutils",
+  "version": "1.0.1",
+  "description": "common usefull scripts",
+  "main": "index.js",
+  "scripts": {
+    "changelog-1": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "first": "standard-version -f",
+    "major": "standard-version -r major",
+    "minor": "standard-version -r minor",
+    "patch": "standard-version -r patch",
+    "pmajor": "standard-version -p major",
+    "pminor": "standard-version -p minor",
+    "ppatch": "standard-version -p patch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nevernet/ServerUtils.git"
+  },
+  "author": "Daniel Qin<>",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg"
+    }
+  },
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "conventional-changelog": "^3.1.15",
+    "conventional-changelog-cli": "^2.0.28",
+    "conventional-commits-detector": "^1.0.2",
+    "conventional-recommended-bump": "^6.0.5",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.1.0",
+    "standard-version": "^8.0.1",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
