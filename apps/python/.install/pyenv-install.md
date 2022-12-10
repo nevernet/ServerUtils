@@ -14,6 +14,18 @@ source ~/.bashrc
 
 ```
 
+macos下安装：
+```
+cd ~
+git clone --depth=1 https://github.com/yyuu/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/shims:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+
 > 如果是用的是 zsh, 则需要修改.bash_profile 为.zshrc
 
 For Linux/Centos etc， 安装 python 之前
@@ -34,10 +46,10 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 ```
 pyenv install 2.7.18
-pyenv install 3.9.13
+pyenv install 3.10.9
 
 -- 如果下载不了，用这个方式，从淘宝镜像下载
-export v=3.9.13; \
+export v=3.10.9; \
 export PYTHON_BUILD_CACHE_PATH="$PYENV_ROOT/cache"; \
 wget https://npm.taobao.org/mirrors/python/$v/Python-$v.tar.xz -P $PYENV_ROOT/cache/; \
 pyenv install $v
@@ -48,7 +60,7 @@ pyenv install $v
 
 ```
 cd /root/.pyenv/plugins/python-build/share/python-build
-cat 3.9.13
+cat 3.10.9
 
 # 修改下载地址如下：
 prefer_openssl11
@@ -78,14 +90,14 @@ fi
 设置全局的版本:
 
 ```
-pyenv global 3.9.13
+pyenv global 3.10.9
 python -V
 ```
 
 临时设置本次 shell 环境
 
 ```
-pyenv shell 3.9.13
+pyenv shell 3.10.9
 ```
 
 # 安装 python 常用的库， install library

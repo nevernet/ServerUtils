@@ -9,6 +9,7 @@ sudo chsh -s /bin/zsh
 
 ## 下载 oh-my-zsh
 
+镜像更新不及时。。。，还是走官方
 ```
 cd ~
 curl -O https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh

@@ -4,9 +4,16 @@ https://brew.sh/
 
 # 镜像安装：
 
+
 ```
 /bin/bash -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
+
+还是要执行一下官方的脚本，才是最新的。
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 
 国内阿里云安装：
 
