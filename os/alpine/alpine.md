@@ -61,6 +61,10 @@ https://mirrors.aliyun.com/alpine/v3.14/community
 
 https://mirrors.aliyun.com/alpine/v3.15/main
 https://mirrors.aliyun.com/alpine/v3.15/community
+
+http://mirrors.tencentyun.com/alpine/v3.17/main
+http://mirrors.tencentyun.com/alpine/v3.15/community
+
 ```
 
 执行: `apk update`
@@ -121,7 +125,10 @@ vi /etc/ssh/sshd_config
 ### 安装系统启动脚本
 
 ```
+# 老版本
 apk add busybox-initscripts
+v3.17
+apk add busybox-openrc
 
 # 添加crond的启动
 rc-update add crond default && rc-service crond start
