@@ -62,7 +62,7 @@ https://mirrors.aliyun.com/alpine/v3.14/community
 https://mirrors.aliyun.com/alpine/v3.15/main
 https://mirrors.aliyun.com/alpine/v3.15/community
 
-http://mirrors.tencentyun.com/alpine/v3.17/main
+http://mirrors.tencentyun.com/alpine/v3.15/main
 http://mirrors.tencentyun.com/alpine/v3.15/community
 
 ```
