@@ -185,3 +185,9 @@ docker push docker.example.com/alpine:3.15
 ```
 
 通过`docker images`查看，就有了`alpine v3`的镜像
+
+
+安装 telnet
+```
+apk add busybox-extras
+```
