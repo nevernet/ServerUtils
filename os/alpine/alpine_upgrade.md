@@ -21,7 +21,7 @@ https://mirrors.aliyun.com/alpine/v3.14/community
 
 更新 apk index: `apk update --update-cache --no-cache --allow-untrusted`
 
-执行升级： 
+执行升级：
 ```
 apk add alpine-base
 apk upgrade --available

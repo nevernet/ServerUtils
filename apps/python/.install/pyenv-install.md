@@ -46,10 +46,10 @@ env PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 ```
 pyenv install 2.7.18
-pyenv install 3.10.9
+pyenv install 3.10.10
 
 -- 如果下载不了，用这个方式，从淘宝镜像下载
-export v=3.10.9; \
+export v=3.10.10; \
 export PYTHON_BUILD_CACHE_PATH="$PYENV_ROOT/cache"; \
 wget https://npm.taobao.org/mirrors/python/$v/Python-$v.tar.xz -P $PYENV_ROOT/cache/; \
 pyenv install $v
@@ -90,7 +90,7 @@ fi
 设置全局的版本:
 
 ```
-pyenv global 3.10.9
+pyenv global 3.10.10
 python -V
 ```
 
@@ -103,7 +103,7 @@ pyenv shell 3.10.9
 # 安装 python 常用的库， install library
 
 ```
-pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com torndb tornado  requests supervisor pymongo redis thrift pynsq arrow python-memcached  mysqlclient pysqlite3 django SQLAlchemy
+pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com torndb tornado  requests supervisor pymongo redis thrift pynsq arrow python-memcached  pysqlite3 django SQLAlchemy
 
 ```
 

@@ -62,8 +62,8 @@ https://mirrors.aliyun.com/alpine/v3.14/community
 https://mirrors.aliyun.com/alpine/v3.15/main
 https://mirrors.aliyun.com/alpine/v3.15/community
 
-http://mirrors.tencentyun.com/alpine/v3.15/main
-http://mirrors.tencentyun.com/alpine/v3.15/community
+http://mirrors.tencentyun.com/alpine/v3.17/main
+http://mirrors.tencentyun.com/alpine/v3.17/community
 
 ```
 
@@ -191,3 +191,19 @@ docker push docker.example.com/alpine:3.15
 ```
 apk add busybox-extras
 ```
+
+创建init.sh文件
+```
+cd ~
+#!/bin/bash
+rc-service sshd restart
+
+while true; do
+
+echo 1
+sleep 5s
+
+done
+```
+
+`chmod +x init.sh`

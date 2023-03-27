@@ -3,9 +3,9 @@
 
 ```
 cd ~
-wget https://download.redis.io/releases/redis-6.2.7.tar.gz
-tar xzf redis-6.2.7.tar.gz
-cd redis-6.2.7
+wget https://download.redis.io/releases/redis-6.2.11.tar.gz
+tar xzf redis-6.2.11.tar.gz
+cd redis-6.2.11
 make && make install
 
 ```
