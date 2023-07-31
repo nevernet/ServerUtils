@@ -32,8 +32,8 @@ apt-get install -y vim wget
 
 ```
 apt-get install -y lsb-release gnupg
-wget https://dev.mysql.com/get/mysql-apt-config_0.8.23-1_all.deb
-dpkg -i mysql-apt-config_0.8.23-1_all.deb
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
+dpkg -i mysql-apt-config_0.8.26-1_all.deb
 # 选择 MySQL Server & Cluster (Currently selected: mysql-8.0)
 apt-get update
 apt-get install -y mysql-server mysql-client
