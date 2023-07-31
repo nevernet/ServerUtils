@@ -11,6 +11,7 @@ docker exec -it 4720d3018066 /bin/bash
 # 安装工具
 
 ```bash
+apk update && apk upgrade
 apk add linux-headers gcc g++ make cmake autoconf git wget rsync libc-dev pkgconf re2c zlib-dev libmemcached-dev
 ```
 
@@ -30,10 +31,43 @@ make install
 # 安装 php 依赖的其他包
 
 必须手动编译 curl， libcurl，因为 alpine 下的 curl 默认是基于 libressl 的，会到跟 php 的 openssl 冲突，
-具体编译参见：[../curl/curl.md](../curl/curl.md)
+具体编译参见：[../../../os/alpine/curl/curl.md](../../../os/alpine/curl/curl.md)
+
+## 安装 curl
+```bash
+cd ~
+wget https://curl.haxx.se/download/curl-7.86.0.tar.gz
+tar zxf curl-7.86.0.tar.gz
+cd curl-7.86.0
+./configure --with-ssl
+make && make install
+
+# 修复cert.pem
+cd ~
+wget http://curl.haxx.se/ca/cacert.pem
+mv cacert.pem /opt/openssl-1.1.1u/bin/ssl/cert.pem
+chmod 644 /opt/openssl-1.1.1u/bin/ssl/cert.pem
+```
+
+## 安装 openssl 1.x 版本
+
+不要直接安装 `openssl openssl-dev`，因为这个是 3.x 版本，会跟 php 的 openssl 冲突。
+
 
 ```bash
-apk add openssl openssl-dev gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev sqlite sqlite-dev oniguruma oniguruma-dev
+cd ~
+wget https://www.openssl.org/source/openssl-1.1.1u.tar.gz
+tar zxf openssl-1.1.1u.tar.gz
+cd openssl-1.1.1u
+mkdir -p /opt/openssl-1.1.1u/bin
+./Configure --prefix=/opt/openssl-1.1.1u/bin -fPIC -shared linux-x86_64
+make -j 8
+make install
+```
+
+
+```bash
+apk add gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev sqlite sqlite-dev oniguruma oniguruma-dev
 ```
 
 # 未确认的包：
@@ -51,9 +85,12 @@ t1lib t1lib-devel
 
 ```bash
 cd ~
-wget https://www.php.net/distributions/php-7.4.3.tar.gz
-tar zxf php-7.4.3.tar.gz
-cd php-7.4.3
+wget https://www.php.net/distributions/php-7.4.33.tar.gz
+tar zxf php-7.4.33.tar.gz
+cd php-7.4.33
+
+# 临时配置环境变量
+export PKG_CONFIG_PATH=/opt/openssl-1.1.1u/bin/lib/pkgconfig
 
 ./configure --prefix=/usr/local  \
     --with-config-file-path=/etc  \
@@ -61,7 +98,8 @@ cd php-7.4.3
     --build=x86_64-linux-musl \
     build_alias=x86_64-linux-musl \
     --with-zlib  \
-    --with-openssl \
+    --with-openssl=/opt/openssl-1.1.1u/bin \
+    --with-openssl-dir=/opt/openssl-1.1.1u/bin \
     --enable-bcmath \
     --enable-calendar \
     --with-curl \
@@ -115,7 +153,7 @@ chown -R www:www /opt/files
 /usr/local/sbin/php-fpm
 ```
 
-# 安装 image magick
+# (不需要）安装 image magick
 
 先安装 djvulibre， 这个在 apk 里面还没有
 
@@ -173,10 +211,11 @@ apk add libmemcached libmemcached-dev
 # pecl 安装
 
 ```
+pecl channel-update pecl.php.net
+
 pecl install igbinary
 pecl install msgpack
 pecl install memcached
-pecl install imagick
 pecl install mongodb
 pecl install grpc
 pecl install protobuf
@@ -186,10 +225,21 @@ pecl install protobuf
 
 ```bash
 cd ~
-git clone -b v3.4.5 --depth=1 --single-branch https://github.com/phalcon/cphalcon.git
+git clone --depth=1 https://github.com/phalcon/cphalcon.git
 cd cphalcon/build
 ./install
 ```
+
+# 安装swoole 4.8.x
+```bash
+cd ~
+git clone  --branch v4.8.13 --depth=1 --single-branch https://github.com/swoole/swoole-src.git
+cd swoole-src
+phpize
+./configure
+make && make install
+```
+
 
 # 安装 redis
 
@@ -206,11 +256,11 @@ make && make install
 
 ```
 extension=igbinary.so
-extension=imagick.so
 extension=memcached.so
 extension=mongodb.so
 extension=phalcon.so
 extension=redis.so
 extension=grpc.so
 extension=protobuf.so
+extension=swoole.so
 ```
