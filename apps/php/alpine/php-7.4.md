@@ -45,7 +45,7 @@ make && make install
 # 修复cert.pem
 cd ~
 wget http://curl.haxx.se/ca/cacert.pem
-mv cacert.pem /opt/openssl-1.1.1u/bin/ssl/cert.pem
+cp cacert.pem /opt/openssl-1.1.1u/bin/ssl/cert.pem
 chmod 644 /opt/openssl-1.1.1u/bin/ssl/cert.pem
 ```
 
