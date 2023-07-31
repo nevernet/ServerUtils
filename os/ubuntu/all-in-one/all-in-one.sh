@@ -11,6 +11,4 @@ ln -fs /lib/systemd/system/rc-local.service /etc/systemd/system/rc-local.service
 ./scripts/timezone.sh
 
 
-
-
 ./scripts/clean.sj
