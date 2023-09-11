@@ -70,7 +70,7 @@ make install
 
 
 ```bash
-apk add gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev sqlite sqlite-dev oniguruma oniguruma-dev
+apk add gd gd-dev gettext gettext-dev libxslt libxslt-dev icu icu-dev libmcrypt libmcrypt-dev readline readline-dev libedit libedit-dev libvpx libvpx-dev libjpeg-turbo libjpeg-turbo-dev libzip libzip-dev freetype freetype-dev gmp gmp-dev libxml2 libxml2-dev tidyhtml tidyhtml-dev libxpm libxpm-dev sqlite sqlite-dev oniguruma oniguruma-dev libsodium libsodium-dev
 ```
 
 ```bash
@@ -121,7 +121,8 @@ export PKG_CONFIG_PATH=/opt/openssl-1.1.1u/bin/lib/pkgconfig
     --with-readline \
     --with-xsl \
     --with-pear \
-    --with-tidy
+    --with-tidy \
+    --with-sodium
 
 make && make install
 
