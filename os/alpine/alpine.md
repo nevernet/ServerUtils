@@ -161,6 +161,9 @@ iface eth0 inet dhcp
 apk add tzdata
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
+
+# 同步时间
+ntpd -d -q -n -p ntp3.aliyun.com
 ```
 
 ### vi ~/.vimrc
