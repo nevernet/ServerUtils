@@ -161,6 +161,13 @@ acme.sh --renew --dns dns_dp -d '*.example.com' --force
 /root/.acme.sh/acme.sh --renew-all --force --renew-hook "/etc/init.d/nginx restart"
 ```
 
+指定letencrypt的服务器
+
+```
+acme.sh --server letsencrypt --renew --force --dns dns_dp -d '*.example.com' --debug
+
+```
+
 去除某个域名的更新：
 `acme.sh --remove -d example.com`
 
