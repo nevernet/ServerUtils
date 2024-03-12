@@ -42,13 +42,6 @@ cd curl-7.86.0
 ./configure --with-ssl
 make && make install
 
-# 修复cert.pem
-cd ~
-wget http://curl.haxx.se/ca/cacert.pem
-cp cacert.pem /opt/openssl-1.1.1u/bin/ssl/cert.pem
-chmod 644 /opt/openssl-1.1.1u/bin/ssl/cert.pem
-```
-
 ## 安装 openssl 1.x 版本
 
 不要直接安装 `openssl openssl-dev`，因为这个是 3.x 版本，会跟 php 的 openssl 冲突。
@@ -59,11 +52,20 @@ cd ~
 wget https://www.openssl.org/source/openssl-1.1.1u.tar.gz
 tar zxf openssl-1.1.1u.tar.gz
 cd openssl-1.1.1u
+# 这个目录有问题，因为容器创建的时候/opt目录会被覆盖掉，导致每次重新创建容器的时候，都要重新安装opoenssl 1.x
 mkdir -p /opt/openssl-1.1.1u/bin
 ./Configure --prefix=/opt/openssl-1.1.1u/bin -fPIC -shared linux-x86_64
 make -j 8
 make install
 ```
+
+# 修复cert.pem
+cd ~
+wget http://curl.haxx.se/ca/cacert.pem
+cp cacert.pem /opt/openssl-1.1.1u/bin/ssl/cert.pem
+chmod 644 /opt/openssl-1.1.1u/bin/ssl/cert.pem
+```
+
 
 
 ```bash
@@ -263,4 +265,25 @@ extension=redis.so
 extension=grpc.so
 extension=protobuf.so
 extension=swoole.so
+```
+
+redis 需要创建的目录
+
+```
+mkdir -p /opt/logs/redis/
+mkdir -p /opt/redis/16379
+```
+
+supervisord 需要创建的目录
+
+```
+mkdir -p /opt/logs/supervisord/
+mkdidr -p /opt/logs/supervisord/nsq/
+```
+
+更新init.sh文件， 增加
+
+```
+rc-service crond restart
+/usr/local/sbin/php-fpm
 ```
