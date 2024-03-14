@@ -1,3 +1,5 @@
+目前存在问题，apline的版本不能高于3.16
+
 # 启动 php 7.4 镜像容器
 
 ```bash
@@ -33,15 +35,6 @@ make install
 必须手动编译 curl， libcurl，因为 alpine 下的 curl 默认是基于 libressl 的，会到跟 php 的 openssl 冲突，
 具体编译参见：[../../../os/alpine/curl/curl.md](../../../os/alpine/curl/curl.md)
 
-## 安装 curl
-```bash
-cd ~
-wget https://curl.haxx.se/download/curl-7.86.0.tar.gz
-tar zxf curl-7.86.0.tar.gz
-cd curl-7.86.0
-./configure --with-ssl
-make && make install
-
 ## 安装 openssl 1.x 版本
 
 不要直接安装 `openssl openssl-dev`，因为这个是 3.x 版本，会跟 php 的 openssl 冲突。
@@ -58,6 +51,15 @@ mkdir -p /opt/openssl-1.1.1u/bin
 make -j 8
 make install
 ```
+
+## 安装 curl
+```bash
+cd ~
+wget https://curl.haxx.se/download/curl-7.86.0.tar.gz
+tar zxf curl-7.86.0.tar.gz
+cd curl-7.86.0
+./configure --with-ssl=/opt/openssl-1.1.1u/bin
+make && make install
 
 # 修复cert.pem
 cd ~
