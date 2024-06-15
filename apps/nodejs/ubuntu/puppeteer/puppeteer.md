@@ -8,12 +8,14 @@ apt-get install -y wget gnupg
 ## 安装字体依赖
 
 ```
-apt-get install -y fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 
+apt-get install -y fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1
 ```
 
 ## 复制 windows 的部分字体到 ubuntu 字体目录
 
 可以参见本目录下的 `fonts` 目录
+
+fonts.tar.gz 在微盘里面，gitlab里面这里放不下
 
 ```
 scp ~/fonts/fonts.tar.gz xx_server:/root
@@ -21,8 +23,10 @@ ssh xx_server:/root
 mv fonts.tar.gz /usr/local/share/fonts
 cd /usr/local/share/fonts
 tar zxf fonts.tar.gz
-mkfontscale && mkfontdir && fc-cache -f -v
+fc-cache -f -v
 ```
+
+其他 mkfontscale && mkfontdir 已经废弃了，直接 fc-cache即可
 
 ## 安装其他依赖
 ```
@@ -31,5 +35,5 @@ apt-get install -y libnss3-dev libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 l
 
 #
 
-官方参考连接 
+官方参考连接
 [https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#running-puppeteer-in-docker)
