@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  postgresql-master:
+    build:
+      context: .
+      dockerfile: Dockerfile.master
+    container_name: postgresql-master
+    environment:
+      POSTGRES_PASSWORD: master_password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql-master-data:/var/lib/postgresql/data
+    networks:
+      - postgresql-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  postgresql-slave:
+    build:
+      context: .
+      dockerfile: Dockerfile.slave
+    container_name: postgresql-slave
+    environment:
+      POSTGRES_PASSWORD: slave_password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgresql-slave-data:/var/lib/postgresql/data
+    depends_on:
+      postgresql-master:
+        condition: service_healthy
+    networks:
+      - postgresql-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgresql-master-data:
+    driver: local
+  postgresql-slave-data:
+    driver: local
+
+networks:
+  postgresql-network:
+    driver: bridge
