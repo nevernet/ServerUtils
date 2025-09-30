@@ -100,44 +100,13 @@ RUN if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then \
 # 确保 SSH 配置正确
 RUN echo "Port 22" >> /etc/ssh/sshd_config && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
-    echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+    echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config && \
+    echo "ClientAliveCountMax 3" >> /etc/ssh/sshd_config && \
+    echo "UseDNS no" >> /etc/ssh/sshd_config
 
-# 创建 init.sh 脚本 - 用于启动没有 openrc 脚本的服务
-RUN echo '#!/bin/bash' > /root/init.sh && \
-    echo '# 检查并启动 openrc 服务' >> /root/init.sh && \
-    echo 'echo "检查服务状态..."' >> /root/init.sh && \
-    echo 'rc-status' >> /root/init.sh && \
-    echo '' >> /root/init.sh && \
-    echo '# 检查服务是否真的在运行' >> /root/init.sh && \
-    echo 'if ! pgrep sshd > /dev/null; then' >> /root/init.sh && \
-    echo '    echo "SSH 服务未运行，正在启动..."' >> /root/init.sh && \
-    echo '    rc-service sshd start' >> /root/init.sh && \
-    echo 'else' >> /root/init.sh && \
-    echo '    echo "SSH 服务已在运行"' >> /root/init.sh && \
-    echo 'fi' >> /root/init.sh && \
-    echo '' >> /root/init.sh && \
-    echo 'if ! pgrep crond > /dev/null; then' >> /root/init.sh && \
-    echo '    echo "Cron 服务未运行，正在启动..."' >> /root/init.sh && \
-    echo '    rc-service crond start' >> /root/init.sh && \
-    echo 'else' >> /root/init.sh && \
-    echo '    echo "Cron 服务已在运行"' >> /root/init.sh && \
-    echo 'fi' >> /root/init.sh && \
-    echo '' >> /root/init.sh && \
-    echo 'echo "等待服务完全启动..."' >> /root/init.sh && \
-    echo 'sleep 2' >> /root/init.sh && \
-    echo 'echo "最终服务状态："' >> /root/init.sh && \
-    echo 'rc-status' >> /root/init.sh && \
-    echo 'echo "进程检查："' >> /root/init.sh && \
-    echo 'ps aux | grep -E "(sshd|crond)" | grep -v grep' >> /root/init.sh && \
-    echo '' >> /root/init.sh && \
-    echo '# 在这里添加其他需要启动的服务' >> /root/init.sh && \
-    echo '# 例如：' >> /root/init.sh && \
-    echo '# /usr/local/bin/my-service --daemon' >> /root/init.sh && \
-    echo '# /usr/sbin/nginx -g "daemon off;"' >> /root/init.sh && \
-    echo '' >> /root/init.sh && \
-    echo '# 执行传入的命令' >> /root/init.sh && \
-    echo 'exec "$@"' >> /root/init.sh && \
-    chmod +x /root/init.sh
+# 复制 init.sh 脚本
+COPY init.sh /root/init.sh
+RUN chmod +x /root/init.sh
 
 # 创建示例：如何为自定义服务创建 openrc 脚本
 RUN echo '#!/sbin/openrc-run' > /etc/init.d/example-service && \

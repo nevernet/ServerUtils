@@ -1,20 +1,5 @@
 # postgresql 最新版本
 
-## 文件说明
-
-本项目提供了完整的 PostgreSQL 部署文件：
-
-### 配置文件
-- `postgresql-master.conf` - 主服务器配置文件
-- `pg_hba-master.conf` - 主服务器认证配置文件
-- `postgresql-slave.conf` - 从服务器配置文件
-- `pg_hba-slave.conf` - 从服务器认证配置文件
-- `recovery.conf` - 从服务器恢复配置文件
-
-### Docker 文件
-- `Dockerfile` - Dockerfile
-- `docker-compose.yml` - Docker Compose 配置
-
 ## Alpine Linux 安装方式
 # 完整连接命令格式
 psql -h <host> -p <port> -U <username> -d <database> -W
