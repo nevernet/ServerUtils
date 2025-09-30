@@ -12,56 +12,20 @@
 - `recovery.conf` - 从服务器恢复配置文件
 
 ### Docker 文件
-- `Dockerfile` - 单机版 Dockerfile
-- `Dockerfile.master` - 主服务器 Dockerfile
-- `Dockerfile.slave` - 从服务器 Dockerfile
+- `Dockerfile` - Dockerfile
 - `docker-compose.yml` - Docker Compose 配置
-- `start.sh` - 单机版启动脚本
-- `start-slave.sh` - 从服务器启动脚本
 
 ## Alpine Linux 安装方式
+# 完整连接命令格式
+psql -h <host> -p <port> -U <username> -d <database> -W
 
-### 1. 直接安装到 Alpine
-
-```bash
-# 更新包索引
-apk update
-
-# 安装 PostgreSQL 和必要组件
-apk add postgresql postgresql-contrib postgresql-client
-
-# 安装 PostGIS (地理空间数据扩展) - 可选
-apk add postgresql-dev gdal-dev geos-dev proj-dev
-
-# 安装 TimescaleDB (时序数据库扩展) - 可选
-apk add postgresql-timescaledb
-
-# 创建 postgres 用户和组
-adduser -D -s /bin/sh postgres
-
-# 创建数据目录
-mkdir -p /var/lib/postgresql/data
-chown postgres:postgres /var/lib/postgresql/data
-
-# 创建日志目录
-mkdir -p /opt/logs/postgresql
-chown postgres:postgres /opt/logs/postgresql
-chmod 755 /opt/logs/postgresql
-
-# 切换到 postgres 用户
-su - postgres
-
-# 初始化数据库
-initdb -D /var/lib/postgresql/data
-
-# 启动 PostgreSQL
-pg_ctl -D /var/lib/postgresql/data -l /var/lib/postgresql/data/logfile start
-
-# 启用 PostGIS 扩展 (如果已安装)
-psql -U postgres -c "CREATE EXTENSION IF NOT EXISTS postgis;"
-
-# 启用 TimescaleDB 扩展 (如果已安装)
-psql -U postgres -c "CREATE EXTENSION IF NOT EXISTS timescaledb;"
+```
+# 参数说明：
+# -h, --host=HOSTNAME     指定数据库服务器主机名或IP地址
+# -p, --port=PORT         指定数据库服务器端口号
+# -U, --username=USERNAME 指定连接用户名
+# -d, --database=DBNAME   指定要连接的数据库名
+# -W, --password
 ```
 
 ## PostgreSQL 服务管理
