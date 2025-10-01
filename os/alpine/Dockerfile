@@ -42,7 +42,9 @@ RUN apk add --no-cache \
     ca-certificates \
     tzdata \
     busybox-extras \
-    vim
+    vim \
+    procps \
+    net-tools
 
 # 确保 bash-completion 文件存在并创建符号链接
 RUN if [ -f /usr/share/bash-completion/bash_completion ]; then \
@@ -88,21 +90,23 @@ RUN echo -e "set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936\nset terme
 # 安装 tini 作为 init 进程
 RUN apk add --no-cache tini
 
-# 配置 openrc 服务
-RUN rc-update add sshd default && \
-    rc-update add crond default
+# 配置 openrc 服务（注释掉，避免cgroup问题）
+# RUN rc-update add sshd default && \
+#     rc-update add crond default && \
+#     rc-update add networking default
 
-# 生成 SSH 主机密钥（如果不存在）
-RUN if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then \
-        ssh-keygen -A; \
-    fi
+# 生成 SSH 主机密钥（强制执行并覆盖）
+RUN ssh-keygen -A && \
+    chmod 600 /etc/ssh/ssh_host_*_key && \
+    chmod 644 /etc/ssh/ssh_host_*_key.pub
 
-# 确保 SSH 配置正确
-RUN echo "Port 22" >> /etc/ssh/sshd_config && \
-    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
-    echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config && \
-    echo "ClientAliveCountMax 3" >> /etc/ssh/sshd_config && \
-    echo "UseDNS no" >> /etc/ssh/sshd_config
+# 创建.ssh目录并设置权限
+RUN mkdir -p /root/.ssh && \
+    chmod 700 /root/.ssh && \
+    chmod 600 /root/.ssh/authorized_keys 2>/dev/null || true
+
+# 复制SSH配置文件
+COPY sshd_config /etc/ssh/sshd_config
 
 # 复制 init.sh 脚本
 COPY init.sh /root/init.sh

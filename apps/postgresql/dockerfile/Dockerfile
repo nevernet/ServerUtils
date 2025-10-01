@@ -3,6 +3,16 @@
 
 FROM alpine:3.19
 
+# 生成 SSH 主机密钥（强制执行并覆盖）
+RUN ssh-keygen -A && \
+    chmod 600 /etc/ssh/ssh_host_*_key && \
+    chmod 644 /etc/ssh/ssh_host_*_key.pub
+
+# 创建.ssh目录并设置权限
+RUN mkdir -p /root/.ssh && \
+    chmod 700 /root/.ssh && \
+    chmod 600 /root/.ssh/authorized_keys 2>/dev/null || true
+
 # 安装 PostgreSQL 和相关工具
 RUN apk add --no-cache \
     postgresql \

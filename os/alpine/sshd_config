@@ -1,0 +1,25 @@
+# SSH服务器配置
+Port 22
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# 认证配置
+PermitRootLogin yes
+# PasswordAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+# 连接保持
+ClientAliveInterval 60
+ClientAliveCountMax 3
+
+# 安全配置
+UseDNS no
+X11Forwarding no
+PrintMotd no
+AcceptEnv LANG LC_*
+
+# 子系统
+Subsystem sftp /usr/lib/ssh/sftp-server

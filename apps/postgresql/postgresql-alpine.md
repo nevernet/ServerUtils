@@ -265,10 +265,23 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO myuser;
 GRANT ALL PRIVILEGES ON TABLE mytable TO myuser;
 ```
 
+```bash
+# 记得重载配置文件：
+SELECT pg_reload_conf();
+
+# 或者使用 pg_ctl 命令
+pg_ctl -D /var/lib/postgresql/data reload
+```
+
 #### 创建数据库并分配用户
 ```sql
 -- 创建数据库
-CREATE DATABASE myapp_db;
+CREATE DATABASE myapp_db
+    WITH
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'zh_CN.utf8'
+    LC_CTYPE = 'zh_CN.utf8'
+    TEMPLATE = template0;
 
 -- 创建用户
 CREATE USER appuser WITH PASSWORD 'apppass';
@@ -283,6 +296,9 @@ GRANT ALL PRIVILEGES ON DATABASE myapp_db TO appuser;
 GRANT ALL ON SCHEMA public TO appuser;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO appuser;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
+
+# 记得重载配置文件：
+SELECT pg_reload_conf();
 ```
 
 ### 限制用户访问特定数据库
@@ -295,6 +311,14 @@ host    test_db         testuser        192.168.1.0/24          md5
 
 # 拒绝其他访问
 host    all             all             0.0.0.0/0               reject
+```
+
+记得重新加载配置文件：
+```bash
+SELECT pg_reload_conf();
+
+# 或者使用 pg_ctl 命令
+pg_ctl -D /var/lib/postgresql/data reload
 ```
 
 #### 方法2: 通过数据库权限限制

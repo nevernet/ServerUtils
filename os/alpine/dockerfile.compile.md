@@ -22,8 +22,8 @@ docker build -t alpine:custom-3.22-latest .
 # 推荐：带版本和描述信息
 docker build \
   -f Dockerfile \
-  --tag alpine:custom-3.22 \
-  --label "version=3.22" \
+  --tag alpine:3.19 \
+  --label "version=3.19" \
   --label "build-date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
   .
 ```
