@@ -294,8 +294,21 @@ GRANT ALL PRIVILEGES ON DATABASE myapp_db TO appuser;
 
 -- 授予用户对 schema 的权限
 GRANT ALL ON SCHEMA public TO appuser;
+-- ✓ 授予 appuser 对 public schema 的所有权限（包括 USAGE, CREATE 等）
+
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO appuser;
+-- ✓ 授予 appuser 对 public schema 中**现有所有表**的权限
+
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
+-- ✓ 授予 appuser 对 public schema 中**现有所有序列**的权限
+
+-- 设置默认权限：未来在 public schema 中创建的表，自动授权给 appuser
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT ALL PRIVILEGES ON TABLES TO appuser;
+
+-- 设置默认权限：未来在 public schema 中创建的序列，自动授权给 appuser
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT ALL PRIVILEGES ON SEQUENCES TO appuser;
 
 # 记得重载配置文件：
 SELECT pg_reload_conf();
