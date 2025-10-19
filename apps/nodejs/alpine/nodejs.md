@@ -1,5 +1,5 @@
 upgrade alpine to 3.16
-apk add nodejs
+apk add nodejs npm
 
 node -v
 npm -v
