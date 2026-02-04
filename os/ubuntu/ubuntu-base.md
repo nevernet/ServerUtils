@@ -4,7 +4,7 @@
 
 更换 中科大镜像，其他几个清华，阿里云等公网速度都很慢
 
-```
+```bash
 cp /etc/apt/sources.list  /etc/apt/sources.list.bak
 sed -i  "s/archive\.ubuntu\.com/mirrors.ustc.edu.cn/g" /etc/apt/sources.list
 sed -i  "s/security\.ubuntu\.com/mirrors.ustc.edu.cn/g" /etc/apt/sources.list
