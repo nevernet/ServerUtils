@@ -42,6 +42,10 @@ https://docs.openclaw.ai/security
 openclaw gateway
 
 ### telegram 配置
+vim ~/.openclaw/openclaw.json
+找到 channel 配置，在telegram里面输入:
+"proxy": "http://127.0.0.1:7890"
+
 openclaw pairing approve telegram <your code>
 
 ## 安装pm2
