@@ -30,25 +30,24 @@ ConditionFileIsExecutable=/etc/rc.local
 After=network.target
 
 [Service]
-Type=forking
-ExecStart=/etc/rc.local start
+Type=simple
+ExecStart=/etc/rc.local
 TimeoutSec=0
 RemainAfterExit=yes
 GuessMainPID=no
-StandaradOutput=tty
-SysVStartPriority=99
 
 [Install]
 WantedBy=multi-user.target
 Alias=rc-local.service
 ```
 
-`vim /etc/rc.local`  文件 
+`vim /etc/rc.local`  文件
 
 ```
-#!/bin/sh -e
+#!/bin/sh
 
 # 写入自己的启动项
+# 注意：不要使用 -e 参数，避免单个命令失败导致整个脚本退出
 
 exit 0
 ```
