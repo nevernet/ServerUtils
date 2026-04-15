@@ -1,3 +1,4 @@
 .DS_Store
 node_modules
+apps/tailscale/clash-all-in-one.yaml
 apps/nodejs/ubuntu/puppeteer/fonts/fonts.tar.gz
